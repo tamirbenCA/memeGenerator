@@ -11,9 +11,12 @@
 </head>
 <body>
         <header><h2>Meme Generator</h2></header> 
-    <input type="file" id="userGallery" multiple="multiple" /><br>
-    <canvas id="canvas" width="500" height="350">
-
-    </canvas>
+    <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg" /><br>
+    <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div>
+        <canvas id="canvas" width="500" height="350">
+        </canvas>   
+    <div class="meme-gallery"></div>
+    <!-- meme gallery render here -->
+    
 </body>
 </html>
