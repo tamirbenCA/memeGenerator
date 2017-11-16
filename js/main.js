@@ -65,9 +65,43 @@ function renderGallery(imgs) {
             </a>
             </div>
             `;
-        });
+    });
     elGallery.innerHTML = strHtmls.join('');
 }
+
+
+function renderSearch() {
+    // Declare variables
+    var elUserSearch = document.querySelector('userSearch');
+    var filter = elUserSearch.value.toLowerCase();
+    var filteredImgs = [];
+    // Loop through all imgs keywords, and show only match to search query
+    for (let i = 0; i < gImgs.length; i++) {
+        var img = gImgs[i];
+        if (img.keywords.includes(filter)) {
+            filteredImgs.push(img);
+        }
+    }
+    renderGallery(filterImgs)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
