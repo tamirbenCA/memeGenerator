@@ -9,7 +9,7 @@ var gImgs = [
     {
         id: 2,
         // url: 'img/2.jpg',
-        keywords: ['sounds of music', 'give no fuck', 'i don\'t care']
+        keywords: ['sound of music', 'give no fuck', 'i don\'t care']
     },
     {
         id: 3,
@@ -55,12 +55,7 @@ function renderGallery(imgs) {
     var strHtmls = imgs.map(function (img, idx) {
         return `
             <div class="gallery-item">
-            <a class="meme-link" data-toggle="modal" onclick="renderMeme${(idx)}" href="#meme-modal">
-            <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-            <i class="fa fa-plus fa-3x"></i>
-            </div>
-            </div>
+            <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
             <img class="img-thumb" src="img/${img.id}.jpg" >
             </a>
             </div>
@@ -71,25 +66,41 @@ function renderGallery(imgs) {
 
 
 function renderSearch() {
-    // Declare variables
     var elUserSearch = document.querySelector('#userSearch');
     var filter = elUserSearch.value.toLowerCase();
     var filteredImgs = [];
-    // Loop through all imgs keywords, and show only match to search query
-    for (let i = 0; i < gImgs.length; i++) {
+    var isAdded = false;
+    // loop through all imgs in array.
+    for (var i = 0; i < gImgs.length; i++) {
         var img = gImgs[i];
-        if (img.keywords.includes(filter)) {
-            filteredImgs.push(img);
+        isAdded = false;
+        // loop throgh all keywords per img and push only match to search query.
+        // a condition isAdded is to prevent an image to be pushed more then once.
+        for (var j = 0; j < img.keywords.length && isAdded === false; j++) {
+            var word = img.keywords[j];
+            if (word.includes(filter)) {
+                filteredImgs.push(img)
+                isAdded = true;
+            }
         }
     }
-    if (filter)     renderGallery(filteredImgs)
-    else            renderGallery(gImgs)
+    // render the filtered array. if the input in searchbox was deleted render the gImgs.
+    if (filter) renderGallery(filteredImgs)
+    else renderGallery(gImgs)
 }
 
 
+//TODO: fetch the idx and render it on canvas.
+function renderMeme(idx) {
+    console.log ('render meme id', idx);
+}
 
 
-
+//TODO: think if we can use something like this for send to canvas.
+// maybe it's the same as previus func renderMeme???
+function getMeme(idx) {
+    gMeme = gImgs.slice(idx, 1);
+}
 
 
 
@@ -125,8 +136,3 @@ function renderSearch() {
 //         elGallery.innerHTML += strHtml;
 //     }
 // }
-
-
-function getMeme() {
-    gMeme = gImgs.slice(this, 1);
-}
