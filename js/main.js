@@ -72,7 +72,7 @@ function renderGallery(imgs) {
 
 function renderSearch() {
     // Declare variables
-    var elUserSearch = document.querySelector('userSearch');
+    var elUserSearch = document.querySelector('#userSearch');
     var filter = elUserSearch.value.toLowerCase();
     var filteredImgs = [];
     // Loop through all imgs keywords, and show only match to search query
@@ -82,7 +82,8 @@ function renderSearch() {
             filteredImgs.push(img);
         }
     }
-    renderGallery(filterImgs)
+    if (filter)     renderGallery(filteredImgs)
+    else            renderGallery(gImgs)
 }
 
 
