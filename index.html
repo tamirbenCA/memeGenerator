@@ -11,7 +11,11 @@
 </head>
 <body onload="initPage()">
         <header><h2>Meme Generator</h2></header> 
+    
     <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg" /><br>
+    
+    <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images...">
+
     <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div>
         <canvas id="canvas" width="500" height="350">
         </canvas>   
