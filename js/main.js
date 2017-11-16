@@ -48,17 +48,17 @@ function renderGallery() {
         var strHtml = '';
         strHtml += ` 
             <div class="gallery-item">
-            <a class="meme-link" data-toggle="modal" onclick="renderMeme${i}" href="#meme-modal">
+            <a class="meme-link" data-toggle="modal" onclick="renderMeme${(i)}" href="#meme-modal">
             <div class="portfolio-hover">
             <div class="portfolio-hover-content">
             <i class="fa fa-plus fa-3x"></i>
             </div>
             </div>
-            <img class="img-thumb" src="img/${i}.id.jpg" >
+            <img class="img-thumb" src="img/${i + 1}.jpg" >
             </a>
             </div>
             `;
-        var elGallery = document.querySelector('.meme-galllery');
+        var elGallery = document.querySelector('.meme-gallery');
         elGallery.innerHTML += strHtml;
     }
 }
