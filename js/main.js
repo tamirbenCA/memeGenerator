@@ -43,25 +43,53 @@ var gMeme = {
     }]
 };
 
-function renderGallery() {
-    for (var i = 0; i < gImgs.length; i++) {
-        var strHtml = '';
-        strHtml += ` 
+
+function initPage() {
+    renderGallery(gImgs);
+}
+
+
+
+function renderGallery(imgs) {
+    var elGallery = document.querySelector('.meme-gallery');
+    var strHtmls = imgs.map(function (img, idx) {
+        return `
             <div class="gallery-item">
-            <a class="meme-link" data-toggle="modal" onclick="renderMeme${(i)}" href="#meme-modal">
+            <a class="meme-link" data-toggle="modal" onclick="renderMeme${(idx)}" href="#meme-modal">
             <div class="portfolio-hover">
             <div class="portfolio-hover-content">
             <i class="fa fa-plus fa-3x"></i>
             </div>
             </div>
-            <img class="img-thumb" src="img/${i + 1}.jpg" >
+            <img class="img-thumb" src="img/${img.id}.jpg" >
             </a>
             </div>
             `;
-        var elGallery = document.querySelector('.meme-gallery');
-        elGallery.innerHTML += strHtml;
-    }
+        });
+    elGallery.innerHTML = strHtmls.join('');
 }
+
+
+
+// function renderGallery(imgs) {
+//     for (var i = 0; i < imgs.length; i++) {
+//         var strHtml = '';
+//         strHtml += ` 
+//             <div class="gallery-item">
+//             <a class="meme-link" data-toggle="modal" onclick="renderMeme${(i)}" href="#meme-modal">
+//             <div class="portfolio-hover">
+//             <div class="portfolio-hover-content">
+//             <i class="fa fa-plus fa-3x"></i>
+//             </div>
+//             </div>
+//             <img class="img-thumb" src="img/${i + 1}.jpg" >
+//             </a>
+//             </div>
+//             `;
+//         var elGallery = document.querySelector('.meme-gallery');
+//         elGallery.innerHTML += strHtml;
+//     }
+// }
 
 
 function getMeme() {
