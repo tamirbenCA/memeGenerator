@@ -2,3 +2,15 @@ body {
     background-color: #cacaca;
 }
 
+h2 {
+    color: #ffffff;
+    text-shadow: 0px 0px 4px #ffffff;
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Shrikhand', cursive;
+}
+
+#canvas {
+    background: #ffffff;
+    display: none;
+}
