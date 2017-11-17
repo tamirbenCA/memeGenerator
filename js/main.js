@@ -55,12 +55,11 @@ function renderGallery(imgs) {
     var strHtmls = imgs.map(function (img, idx) {
         return `
             <div class="gallery-item">
-            <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
-            <img class="img-thumb" src="img/${img.id}.jpg" >
-            </a>
+            <img class="img-thumb" src="img/${img.id}.jpg" onclick="renderMeme(this, ${(idx)})" />
             </div>
             `;
-    });
+        });
+        // <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
     elGallery.innerHTML = strHtmls.join('');
 }
 
@@ -91,27 +90,27 @@ function renderSearch() {
 
 
 //TODO: fetch the idx and render it on canvas.
-function renderMeme(idx) {
-    console.log ('render meme id', idx);
-}
-
-
-//TODO: think if we can use something like this for send to canvas.
-// maybe it's the same as previus func renderMeme???
-function getMeme(idx) {
+function renderMeme(elImg, idx) {
+    console.log ('render meme', elImg);
+    
     gMeme = gImgs.slice(idx, 1);
+    console.log ('gMeme', gMeme);
+    
+    var elCanvas = document.querySelector('#canvas');
+    var ctx = elCanvas.getContext('2d');
+    ctx.drawImage(elImg, 0, 0, elCanvas.width, elCanvas.height);
 }
 
 
-
-
-
-
-
-
-
-
-
+function renderFirstRow() {
+    var elFirstRowMeme = document.querySelector("#canvas .first-row");
+    console.log('first row meme', elFirstRowMeme);
+    var elFirstRowInput = document.querySelector(".input-first-row");
+    console.log('first row input', elFirstRowInput);
+    var text = elFirstRowInput.value;
+    console.log('text', text);
+    elFirstRowMeme.innerText = text;
+}
 
 
 

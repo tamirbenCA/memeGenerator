@@ -10,15 +10,28 @@ h2 {
     font-family: 'Shrikhand', cursive;
 }
 
+.meme-generator {
+    display: flex;
+    justify-content: space-around;
+}
+/* .meme-generator .hidden {
+    height: 0px;
+} */
+
 #canvas {
     background: #ffffff;
-    display: none;
+    width: 500px;
+    height: 350px;
 }
+/* 
+#canvas .hidden {
+    height: 0px;
+} */
 
 #userSearch {
     padding:17px;padding-left:55px;width:300px;border:1px solid #f5f5f5;
     font-size:13px;color:gray;
-    background-image:url('../img/search logo.png');
+    background-image:url('../img/icons/search logo.png');
     background-repeat:no-repeat;
     background-position:left center;
     outline:0;
@@ -35,4 +48,93 @@ h2 {
     max-height: 150px;
     display: block;
     padding-top: 20px;
+}
+
+.control {
+    display: flex; 
+    width: 400px;
+    /* flex-flow: column; */
+}
+
+.editor {
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.edit-buttons {
+    justify-content: space-between;
+}
+
+.input-first-row {
+    background-color: red;
+    width: 400px;
+    direction: rtl;
+
+}
+
+.font-color {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+button {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+.align-right {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/align-right.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.align-center {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/align-center.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.align-left {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/align-left.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.font-type {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/font-type.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.font-inc {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/font-inc.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.font-dec {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/font-dec.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.shadow {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/shadow.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.trash {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/trash.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
 }

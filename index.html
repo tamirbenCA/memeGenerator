@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,50 @@
     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
 
 </head>
-<body onload="initPage()">
-        <header><h2>Meme Generator</h2></header> 
-    
-    <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg" /><br>
-    
-    <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images...">
 
-    <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div>
-        <canvas id="canvas" width="500" height="350">
-        </canvas>   
+<body onload="initPage()">
+    <header>
+        <h2>Meme Generator</h2>
+    </header>
+
+    <!-- add class hidden and remove class by js -->
+    <section class="meme-generator">
+        <!-- add class hidden and remove class by js -->
+        <canvas id="canvas">
+            Sorry, no canvas available
+            <h3 class="meme-row first-row"></h3>
+            <h3 class="meme-row second-row"></h3>
+        </canvas>
+        <div class="control">
+            <div class="editor">
+                <div>
+                    <input type="text" class="input-first-row" onkeyup="renderFirstRow()" placeholder="הכנס טקסט כאן" />
+                </div>
+                <section class="buttons">
+                    <button class="align-right"></button>
+                    <button class="align-center"></button>
+                    <button class="align-left"></button>
+                    <button class="font-type"></button>
+                    <button class="font-inc"></button>
+                    <button class="font-dec"></button>
+                    <button class="shadow"></button>
+                    <input type="color" class="font-color" value="#ffffff">
+                    <button class="trash"></button>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg" />
+    <br>
+
+    <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
+
+    <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
     <div class="meme-gallery"></div>
     <!-- meme gallery render here -->
-    
-<script src="js/main.js"></script>
+
+    <script src="js/main.js"></script>
 </body>
+
 </html>
