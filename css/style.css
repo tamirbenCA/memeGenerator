@@ -19,10 +19,16 @@ h2 {
 } */
 
 #canvas {
+    display: flex;
     background: #ffffff;
     width: 500px;
     height: 350px;
 }
+
+.meme-row {
+    z-index: 1;
+}
+
 /* 
 #canvas .hidden {
     height: 0px;
@@ -53,7 +59,8 @@ h2 {
 .control {
     display: flex; 
     width: 400px;
-    /* flex-flow: column; */
+    flex-direction: column;
+    justify-content: space-between
 }
 
 .editor {
@@ -62,14 +69,19 @@ h2 {
 }
 
 .edit-buttons {
+    display: flex;
     justify-content: space-between;
+    flex-flow: row-reverse;
+    align-items: center;
 }
 
-.input-first-row {
-    background-color: red;
+.input-text {
+    padding: 10px 0;
+    border:1px solid #f5f5f5;
+    font-size:13px;color:gray;
+    outline:0;  
     width: 400px;
     direction: rtl;
-
 }
 
 .font-color {
@@ -81,6 +93,7 @@ button {
     height: 30px;
     width: 30px;
     margin: 5px;
+    cursor: pointer;
 }
 .align-right {
     border:1px solid #f5f5f5;
@@ -138,3 +151,33 @@ button {
     background-repeat:no-repeat;
     outline:0;
 }
+
+/* Tooltip text */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    /* left tooltip */
+    top: -5px;
+    right: 105%; 
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+

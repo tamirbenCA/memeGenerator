@@ -55,7 +55,7 @@ function renderGallery(imgs) {
     var strHtmls = imgs.map(function (img, idx) {
         return `
             <div class="gallery-item">
-            <img class="img-thumb" src="img/${img.id}.jpg" onclick="renderMeme(this, ${(idx)})" />
+            <img class="img-thumb" src="img/${img.id}.jpg" onclick="renderImg(this, ${(idx)})" />
             </div>
             `;
         });
@@ -90,8 +90,8 @@ function renderSearch() {
 
 
 //TODO: fetch the idx and render it on canvas.
-function renderMeme(elImg, idx) {
-    console.log ('render meme', elImg);
+function renderImg(elImg, idx) {
+    console.log ('render img', elImg);
     
     gMeme = gImgs.slice(idx, 1);
     console.log ('gMeme', gMeme);
@@ -102,17 +102,19 @@ function renderMeme(elImg, idx) {
 }
 
 
+
 function renderFirstRow() {
-    var elFirstRowMeme = document.querySelector("#canvas .first-row");
-    console.log('first row meme', elFirstRowMeme);
     var elFirstRowInput = document.querySelector(".input-first-row");
-    console.log('first row input', elFirstRowInput);
+    // console.log('first row input', elFirstRowInput);
     var text = elFirstRowInput.value;
     console.log('text', text);
-    elFirstRowMeme.innerText = text;
+
+    var elCanvas = document.querySelector('#canvas');
+    var ctx = elCanvas.getContext("2d");
+    ctx.font = "30px Arial";
+    // ctx.fillText(text,10,50);
+    ctx.fillRect(0, 130, canvas.width, 70);
 }
-
-
 
 
 

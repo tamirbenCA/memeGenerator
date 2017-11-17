@@ -21,26 +21,76 @@
         <!-- add class hidden and remove class by js -->
         <canvas id="canvas">
             Sorry, no canvas available
-            <h3 class="meme-row first-row"></h3>
-            <h3 class="meme-row second-row"></h3>
         </canvas>
         <div class="control">
             <div class="editor">
                 <div>
-                    <input type="text" class="input-first-row" onkeyup="renderFirstRow()" placeholder="הכנס טקסט כאן" />
+                    <!-- <input type="text" class="input-top-text" onkeyup="renderFirstRow()" placeholder="הכנס טקסט כאן" /> -->
+                    <input type="text" class="input-text text-top" placeholder="הכנס טקסט כאן" />
                 </div>
-                <section class="buttons">
-                    <button class="align-right"></button>
-                    <button class="align-center"></button>
-                    <button class="align-left"></button>
-                    <button class="font-type"></button>
-                    <button class="font-inc"></button>
-                    <button class="font-dec"></button>
-                    <button class="shadow"></button>
-                    <input type="color" class="font-color" value="#ffffff">
-                    <button class="trash"></button>
+                <section class="edit-buttons">
+                    <button class="align-right tooltip">
+                        <span class="tooltiptext">יישור לימין</span>
+                    </button>
+                    <button class="align-center tooltip">
+                        <span class="tooltiptext">יישור למרכז</span>
+                    </button>
+                    <button class="align-left tooltip">
+                        <span class="tooltiptext">יישור לשמאל</span>
+                    </button>
+                    <button class="font-type tooltip">
+                        <span class="tooltiptext">סוג פונט</span>
+                    </button>
+                    <button class="font-inc tooltip">
+                        <span class="tooltiptext">הגדל פונט</span>
+                    </button>
+                    <button class="font-dec tooltip">
+                        <span class="tooltiptext">הקטן פונט</span>
+                    </button>
+                        <input type="color" class="font-color tooltip" value="#ffffff">
+                            <!-- <span class="tooltiptext">צבע פונט</span> -->
+                    <button class="shadow tooltip">
+                        <span class="tooltiptext">הוסף / הסר אפקט צל</span>
+                    </button>
+                    <button class="trash tooltip">
+                        <span class="tooltiptext">מחק</span>
+                    </button>
                 </section>
             </div>
+            <div class="editor">
+                    <div>
+                        <!-- <input type="text" class="input-top-text" onkeyup="renderFirstRow()" placeholder="הכנס טקסט כאן" /> -->
+                        <input type="text" class="input-text text-bottom" placeholder="הכנס טקסט כאן" />
+                    </div>
+                    <section class="edit-buttons">
+                        <button class="align-right tooltip">
+                            <span class="tooltiptext">יישור לימין</span>
+                        </button>
+                        <button class="align-center tooltip">
+                            <span class="tooltiptext">יישור למרכז</span>
+                        </button>
+                        <button class="align-left tooltip">
+                            <span class="tooltiptext">יישור לשמאל</span>
+                        </button>
+                        <button class="font-type tooltip">
+                            <span class="tooltiptext">סוג פונט</span>
+                        </button>
+                        <button class="font-inc tooltip">
+                            <span class="tooltiptext">הגדל פונט</span>
+                        </button>
+                        <button class="font-dec tooltip">
+                            <span class="tooltiptext">הקטן פונט</span>
+                        </button>
+                            <input type="color" class="font-color tooltip" value="#ffffff">
+                                <!-- <span class="tooltiptext">צבע פונט</span> -->
+                        <button class="shadow tooltip">
+                            <span class="tooltiptext">הוסף / הסר אפקט צל</span>
+                        </button>
+                        <button class="trash tooltip">
+                            <span class="tooltiptext">מחק</span>
+                        </button>
+                    </section>
+                </div>
         </div>
     </section>
 
