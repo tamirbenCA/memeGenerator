@@ -23,6 +23,7 @@ h2 {
     background: #ffffff;
     width: 500px;
     height: 350px;
+    direction: rtl;
 }
 
 .meme-row {
@@ -71,10 +72,14 @@ h2 {
 .edit-buttons {
     display: flex;
     justify-content: space-between;
-    flex-flow: row-reverse;
+    /* insted of flex-flow, i used direction rtl. in this case when translate the buttons will move back left-tp-right. */
+    /* TO DISCUSS: maybe to put rtl on body, but then the canvas and edit section switch sides. */
+    /* flex-flow: row-reverse; */
+    direction: rtl;
     align-items: center;
 }
 
+/* to check if we can change direction when user write in english  */
 .input-text {
     padding: 10px 0;
     border:1px solid #f5f5f5;
