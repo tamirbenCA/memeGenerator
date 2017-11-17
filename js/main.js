@@ -43,6 +43,7 @@ var gMeme = {
     }]
 };
 
+var gElImg;
 
 function initPage() {
     renderGallery(gImgs);
@@ -58,8 +59,8 @@ function renderGallery(imgs) {
             <img class="img-thumb" src="img/${img.id}.jpg" onclick="renderImg(this, ${(idx)})" />
             </div>
             `;
-        });
-        // <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
+    });
+    // <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
     elGallery.innerHTML = strHtmls.join('');
 }
 
@@ -89,32 +90,99 @@ function renderSearch() {
 }
 
 
-//TODO: fetch the idx and render it on canvas.
 function renderImg(elImg, idx) {
-    console.log ('render img', elImg);
-    
-    gMeme = gImgs.slice(idx, 1);
-    console.log ('gMeme', gMeme);
-    
+    // console.log('elImg', elImg);
+    // console.log('idx', idx);
+
+    // draw selcted img on canvas
+    gElImg = elImg;
     var elCanvas = document.querySelector('#canvas');
     var ctx = elCanvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
     ctx.drawImage(elImg, 0, 0, elCanvas.width, elCanvas.height);
 }
 
-
-
-function renderFirstRow() {
-    var elFirstRowInput = document.querySelector(".input-first-row");
-    // console.log('first row input', elFirstRowInput);
-    var text = elFirstRowInput.value;
-    console.log('text', text);
-
+function renderRow() {
     var elCanvas = document.querySelector('#canvas');
-    var ctx = elCanvas.getContext("2d");
-    ctx.font = "30px Arial";
-    // ctx.fillText(text,10,50);
-    ctx.fillRect(0, 130, canvas.width, 70);
+    var ctx = elCanvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(gElImg, 0, 0, elCanvas.width, elCanvas.height);
+    
+    
+    // global properties and upper text properties  
+    ctx.lineWidth = 4;
+    ctx.font = '20pt sans-serif';
+    ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+
+    var elTopInput = document.querySelector('.input-top');
+    // console.log('top text element', elTopText)
+    var topText = elTopInput.value;
+    // console.log('top text', topText);
+    var x = elCanvas.width / 2;
+    var y = 0;
+
+    wrapText(ctx, topText, x, y, 300, 28, false);
+
+    // bottom text properties
+    ctx.textBaseline = 'bottom';
+    var elBottomInput = document.querySelector('.input-bottom');
+    // console.log('bottom text', elBottomText)
+    var bottomText = elBottomInput.value;
+    y = elCanvas.height;
+
+    wrapText(ctx, bottomText, x, y, 300, 28, true);
 }
+
+
+function wrapText(context, text, x, y, maxWidth, lineHeight, fromBottom) {
+
+    var pushMethod = (fromBottom) ? 'unshift' : 'push';
+
+    lineHeight = (fromBottom) ? -lineHeight : lineHeight;
+
+    var lines = [];
+    var y = y;
+    var line = '';
+    var words = text.split(' ');
+
+    for (var n = 0; n < words.length; n++) {
+        var testLine = line + ' ' + words[n];
+        var metrics = context.measureText(testLine);
+        var testWidth = metrics.width;
+
+        if (testWidth > maxWidth) {
+            lines[pushMethod](line);
+            line = words[n] + ' ';
+        } else {
+            line = testLine;
+        }
+    }
+    lines[pushMethod](line);
+
+    for (var k in lines) {
+        context.strokeText(lines[k], x, y + lineHeight * k);
+        context.fillText(lines[k], x, y + lineHeight * k);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

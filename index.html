@@ -25,8 +25,8 @@
         <div class="control">
             <div class="editor">
                 <div>
-                    <!-- <input type="text" class="input-top-text" onkeyup="renderFirstRow()" placeholder="הכנס טקסט כאן" /> -->
-                    <input type="text" class="input-text text-top" placeholder="הכנס טקסט כאן" />
+                    <input type="text" class="input-text input-top" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                    <!-- <input type="text" class="input-text text-top" placeholder="הכנס טקסט כאן" /> -->
                 </div>
                 <section class="edit-buttons">
                     <button class="align-right tooltip">
@@ -59,8 +59,8 @@
             </div>
             <div class="editor">
                     <div>
-                        <!-- <input type="text" class="input-top-text" onkeyup="renderFirstRow()" placeholder="הכנס טקסט כאן" /> -->
-                        <input type="text" class="input-text text-bottom" placeholder="הכנס טקסט כאן" />
+                        <input type="text" class="input-text input-bottom" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                        <!-- <input type="text" class="input-text text-bottom" placeholder="הכנס טקסט כאן" /> -->
                     </div>
                     <section class="edit-buttons">
                         <button class="align-right tooltip">
@@ -94,10 +94,11 @@
         </div>
     </section>
 
-    <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg" />
+    <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg"/>
     <br>
 
     <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
+    <!-- TO DISCUSS: add a modal for keywords??? -->
 
     <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
     <div class="meme-gallery"></div>
