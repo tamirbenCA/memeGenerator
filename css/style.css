@@ -10,15 +10,35 @@ h2 {
     font-family: 'Shrikhand', cursive;
 }
 
-#canvas {
-    background: #ffffff;
-    display: none;
+.meme-generator {
+    display: flex;
+    justify-content: space-around;
 }
+/* .meme-generator .hidden {
+    height: 0px;
+} */
+
+#canvas {
+    display: flex;
+    background: #ffffff;
+    width: 500px;
+    height: 350px;
+    direction: rtl;
+}
+
+.meme-row {
+    z-index: 1;
+}
+
+/* 
+#canvas .hidden {
+    height: 0px;
+} */
 
 #userSearch {
     padding:17px;padding-left:55px;width:300px;border:1px solid #f5f5f5;
     font-size:13px;color:gray;
-    background-image:url('../img/search logo.png');
+    background-image:url('../img/icons/search logo.png');
     background-repeat:no-repeat;
     background-position:left center;
     outline:0;
@@ -35,6 +55,140 @@ h2 {
     max-height: 150px;
     display: block;
     padding-top: 20px;
+<<<<<<< HEAD
     padding: 5px;
     overflow: hidden;
 }
+=======
+}
+
+.control {
+    display: flex; 
+    width: 400px;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.editor {
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    /* insted of flex-flow, i used direction rtl. in this case when translate the buttons will move back left-tp-right. */
+    /* TO DISCUSS: maybe to put rtl on body, but then the canvas and edit section switch sides. */
+    /* flex-flow: row-reverse; */
+    direction: rtl;
+    align-items: center;
+}
+
+/* to check if we can change direction when user write in english  */
+.input-text {
+    padding: 10px 0;
+    border:1px solid #f5f5f5;
+    font-size:13px;color:gray;
+    outline:0;  
+    width: 400px;
+    direction: rtl;
+}
+
+.font-color {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+button {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    cursor: pointer;
+}
+.align-right {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/align-right.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.align-center {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/align-center.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.align-left {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/align-left.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.font-type {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/font-type.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.font-inc {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/font-inc.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.font-dec {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/font-dec.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.shadow {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/shadow.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+.trash {
+    border:1px solid #f5f5f5;
+    background-image:url('../img/icons/trash.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+}
+
+/* Tooltip text */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    /* left tooltip */
+    top: -5px;
+    right: 105%; 
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+>>>>>>> 48a5eb4d7fa3bc899955ac0f151e4012fb14d25e
