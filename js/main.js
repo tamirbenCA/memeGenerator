@@ -1,3 +1,17 @@
+// TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
+// TODO: fix the dropdown menu for font, clikable and not hover.
+// TODO: shadow button should be toggled on/off. i can now only turn it on.
+// TOOD: nav-bar
+// TODO: about us section
+// TODO: upload a file.
+// TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
+// V: tag cloud.
+// V: save the file.
+// TODO: the file saves is 300x150px which is the canvas size. fix it so it would save full size img.
+
+
+
+
 'use strict'
 
 var gImgs = [
@@ -311,4 +325,9 @@ function setSearch(word) {
     var elUserSearch = document.querySelector('#userSearch');
     elUserSearch.value = word;
     renderSearch();
+}
+
+function downloadImg(elLink) {
+    elLink.href = canvas.toDataURL();
+    elLink.download = 'myMeme.jpg';
 }
