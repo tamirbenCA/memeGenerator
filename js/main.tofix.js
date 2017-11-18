@@ -44,6 +44,7 @@ var gMeme = {
         color: 'white',
         x: '',
         y: '',
+        shadow: 0,
     },
     {
         line: '',
@@ -53,6 +54,7 @@ var gMeme = {
         color: 'white',
         x: '',
         y: '',
+        shadow: 0,
     }]
 };
 
@@ -145,6 +147,8 @@ function renderRow() {
     gCtx.fillStyle = gMeme.txts[0].color;
     gCtx.textAlign = gMeme.txts[0].align;
     gCtx.textBaseline = 'top';
+    gCtx.shadowColor = 'black';
+    gCtx.shadowBlur = gMeme.txts[0].shadow;
 
     var elTopInput = document.querySelector('.input-top');
     // console.log('top text element', elTopText)
@@ -160,6 +164,8 @@ function renderRow() {
     gCtx.fillStyle = gMeme.txts[1].color;
     gCtx.textAlign = gMeme.txts[1].align;
     gCtx.textBaseline = 'bottom';
+    gCtx.shadowColor = 'black';
+    gCtx.shadowBlur = gMeme.txts[1].shadow;    
 
 
     var elBottomInput = document.querySelector('.input-bottom');
@@ -263,4 +269,9 @@ function dismissRow(rowIdx) {
     elInput.value="";
     renderRow();
 }
-    
+
+//TOFIX: HOW TO TOGGLE THIS???
+function shadowEffect(rowIdx) {
+    gMeme.txts[rowIdx].shadow = 20;
+    renderRow();
+}
