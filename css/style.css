@@ -190,5 +190,28 @@ button {
     visibility: visible;
 }
 
+.tagCloud {
+    width: auto;
+    padding-top: 14px;
+    padding-bottom: 30px;
+}
 
+<<<<<<< HEAD
 >>>>>>> 48a5eb4d7fa3bc899955ac0f151e4012fb14d25e
+=======
+.key-size1 {
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.key-size2 {
+    font-size: 30px;
+    cursor: pointer;
+
+}
+
+.key-size3 {
+    font-size: 40px;
+    cursor: pointer;
+}
+>>>>>>> 702016f9591dc47a33ceee09a46626ed637bad6a
