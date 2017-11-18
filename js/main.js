@@ -1,13 +1,3 @@
-//TODO: Dynamic canvas - the canvas should be in same ratio as original img.
-//TODO: fix the dropdown menu for font, clikable and not hover.
-//TODO: shadow button should be toggled on/off. i can now only turn it on.
-//TOOD: nav-bar
-//TODO: about us section
-//TODO: upload a file.
-//TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
-
-
-
 'use strict'
 
 var gImgs = [
@@ -45,20 +35,38 @@ var gImgs = [
 
 var gMeme = {
     selectedImgId: '',
+    elImg: '',
     txts: [{
         line: '',
+        font: 'sans-serif',
         size: 20,
         align: 'center',
-        color: 'white'
+        color: 'white',
+        x: '',
+        y: '',
+        shadow: 0,
+    },
+    {
+        line: '',
+        font: 'sans-serif',
+        size: 20,
+        align: 'center',
+        color: 'white',
+        x: '',
+        y: '',
+        shadow: 0,
     }]
 };
 
-var gElImg;
+var gElCanvas;
+var gCtx;
+
 
 function initPage() {
     renderGallery(gImgs);
+    gElCanvas = document.querySelector('#canvas');  
+    gCtx = gElCanvas.getContext('2d'); 
 }
-
 
 
 function renderGallery(imgs) {
@@ -66,7 +74,7 @@ function renderGallery(imgs) {
     var strHtmls = imgs.map(function (img, idx) {
         return `
             <div class="gallery-item">
-            <img class="img-thumb" src="img/${img.id}.jpg" onclick="renderImg(this, ${(idx)})" />
+            <img class="img-thumb" src="img/${img.id}.jpg" onclick="selectImg(this, ${(idx)})" />
             </div>
             `;
     });
@@ -100,50 +108,73 @@ function renderSearch() {
 }
 
 
-function renderImg(elImg, idx) {
+function selectImg(elImg, idx) {
     // console.log('elImg', elImg);
     // console.log('idx', idx);
 
     // draw selcted img on canvas
-    gElImg = elImg;
-    var elCanvas = document.querySelector('#canvas');
-    var ctx = elCanvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(elImg, 0, 0, elCanvas.width, elCanvas.height);
+    gMeme.selectedImgId = idx;
+    gMeme.elImg = elImg;
+    setGMeme();
+    renderImg();
 }
 
+
+function renderImg() {
+    gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+function setGMeme() {
+    gMeme.txts[0].x = gElCanvas.width / 2;
+    gMeme.txts[0].y = 0;
+    gMeme.txts[1].x = gElCanvas.width / 2;
+    gMeme.txts[1].y = gElCanvas.height;
+}
+
+
+// function 
 function renderRow() {
-    var elCanvas = document.querySelector('#canvas');
-    var ctx = elCanvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(gElImg, 0, 0, elCanvas.width, elCanvas.height);
+    gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
 
     // global properties and upper text properties  
-    ctx.lineWidth = 4;
-    ctx.font = '20pt sans-serif';
-    ctx.strokeStyle = 'black';
-    ctx.fillStyle = 'white';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
+    gCtx.lineWidth = 4;
+    // ctx.font = '20pt sans-serif';
+    gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
+    gCtx.strokeStyle = 'black';
+    gCtx.fillStyle = gMeme.txts[0].color;
+    gCtx.textAlign = gMeme.txts[0].align;
+    gCtx.textBaseline = 'top';
+    gCtx.shadowColor = 'black';
+    gCtx.shadowBlur = gMeme.txts[0].shadow;
 
     var elTopInput = document.querySelector('.input-top');
     // console.log('top text element', elTopText)
     var topText = elTopInput.value;
+    gMeme.txts[0].line = topText;
     // console.log('top text', topText);
-    var x = elCanvas.width / 2;
-    var y = 0;
 
-    wrapText(ctx, topText, x, y, 300, 28, false);
+    wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, 300, 28, false);
 
     // bottom text properties
-    ctx.textBaseline = 'bottom';
+    gCtx.font = gMeme.txts[1].size + 'pt ' + gMeme.txts[1].font;
+    gCtx.strokeStyle = 'black';
+    gCtx.fillStyle = gMeme.txts[1].color;
+    gCtx.textAlign = gMeme.txts[1].align;
+    gCtx.textBaseline = 'bottom';
+    gCtx.shadowColor = 'black';
+    gCtx.shadowBlur = gMeme.txts[1].shadow;    
+
+
     var elBottomInput = document.querySelector('.input-bottom');
     // console.log('bottom text', elBottomText)
     var bottomText = elBottomInput.value;
-    y = elCanvas.height;
+    gMeme.txts[1].line = bottomText;    
 
-    wrapText(ctx, bottomText, x, y, 300, 28, true);
+    // wrapText(ctx, bottomText, x, y, 300, 28, true);
+    wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, 300, 28, true);
 }
 
 
@@ -176,6 +207,73 @@ function wrapText(context, text, x, y, maxWidth, lineHeight, fromBottom) {
         context.strokeText(lines[k], x, y + lineHeight * k);
         context.fillText(lines[k], x, y + lineHeight * k);
     }
+}
+
+
+function alignText(alignment, rowIdx) {
+    gMeme.txts[rowIdx].align = alignment;
+    switch (alignment) {
+        case 'right':
+            gMeme.txts[rowIdx].x = gElCanvas.width;
+            break;
+        case 'left':
+            gMeme.txts[rowIdx].x = 0;
+            break;
+        case 'center':
+            gMeme.txts[rowIdx].x = gElCanvas.width / 2;
+            break;
+    }
+    renderRow();
+}
+
+function changeFontSize(change, rowIdx) {
+    if (change === 'inc') {
+        // console.log('inc font size');
+        gMeme.txts[rowIdx].size++;
+    } else {
+        // console.log('dec font size');
+        gMeme.txts[rowIdx].size--;
+    }
+    renderRow();
+}
+
+function changeColor(value, rowIdx) {
+    console.log('change color row:', rowIdx, 'color:', value);
+    gMeme.txts[rowIdx].color = value;
+    renderRow();
+}
+
+function dismissRow(rowIdx) {
+    console.log('dismiss row:', rowIdx);
+    var txt = {
+        line: '',
+        font: 'sans-serif',
+        size: 20,
+        align: 'center',
+        color: 'white',
+        x: '',
+        y: '',
+        }
+    gMeme.txts.splice(rowIdx, 1, txt);
+    alignText('center', rowIdx);
+    var elColor;
+    var elInput;
+    if (rowIdx === 0) {
+        elColor = document.querySelector('.top-color');
+        elInput = document.querySelector('.input-top');
+    } else if (rowIdx === 1) {
+        elColor = document.querySelector('.bottom-color');
+        elInput = document.querySelector('.input-bottom');
+    }
+    elColor.value="#ffffff";
+    elInput.value="";
+    renderRow();
+}
+
+//TOFIX: HOW TO TOGGLE THIS???
+function shadowEffect(rowIdx) {
+    gMeme.txts[rowIdx].shadow = 20;
+    renderRow();
 }
 
 

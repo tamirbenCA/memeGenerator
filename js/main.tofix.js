@@ -275,3 +275,40 @@ function shadowEffect(rowIdx) {
     gMeme.txts[rowIdx].shadow = 20;
     renderRow();
 }
+
+
+function countWordApperances() {
+    var countWordApperances = {};
+
+    for (var i = 0; i < gImgs.length; i++) {
+        var img = gImgs[i];
+        for (var j = 0; j < img.keywords.length; j++) {
+            if (!countWordApperances[img.keywords[j]]) {
+                countWordApperances[img.keywords[j]] = 0;
+            }
+            countWordApperances[img.keywords[j]]++;
+        }
+    }
+    return countWordApperances;
+}
+
+function tagCloud() {
+    var elGallery = document.querySelector('.meme-gallery');
+    var keyWords = countWordApperances();
+    var strHtmls = '';    
+    // console.log(keyWords)
+    
+    for (var word in keyWords) {
+        // console.log(word, keyWords[word]);
+        var strHtml = ' <p class="key-size' + keyWords[word] + 
+            '" onclick="setSearch(\'' + word + '\')" > ' + word + ' </p>';
+        strHtmls += strHtml;
+    };
+    elGallery.innerHTML = strHtmls;
+}
+
+function setSearch(word) {
+    var elUserSearch = document.querySelector('#userSearch');
+    elUserSearch.value = word;
+    renderSearch();
+}
