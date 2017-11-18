@@ -185,4 +185,24 @@ button {
     visibility: visible;
 }
 
+.tagCloud {
+    width: auto;
+    padding-top: 14px;
+    padding-bottom: 30px;
+}
 
+.key-size1 {
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.key-size2 {
+    font-size: 30px;
+    cursor: pointer;
+
+}
+
+.key-size3 {
+    font-size: 40px;
+    cursor: pointer;
+}

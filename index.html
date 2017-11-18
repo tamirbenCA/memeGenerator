@@ -40,7 +40,7 @@
                     </button>
                     <button class="font-type tooltip">
                         <span class="tooltiptext">סוג פונט</span>
-                    </button>
+                    </button>                       
                     <button class="font-inc tooltip" onclick="changeFontSize('inc', 0)">
                         <span class="tooltiptext">הגדל פונט</span>
                     </button>
@@ -94,17 +94,18 @@
         </div>
     </section>
 
-    <input type="file" id="userGallery" multiple="multiple" accept="image/x-png,image/gif,image/jpeg"/>
+    <input type="file" id="userGallery" style="color:transparent;" onchange="this.style.color = 'black';" multiple="multiple" accept="image/x-png,image/gif,image/jpeg"/>
     <br>
 
     <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
     <!-- TO DISCUSS: add a modal for keywords??? -->
+    <button class="tagCloud" onclick="tagCloud()">Tag Cloud</button>
 
     <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
     <div class="meme-gallery"></div>
     <!-- meme gallery render here -->
 
-    <script src="js/main.tofix.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
