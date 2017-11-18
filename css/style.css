@@ -31,8 +31,10 @@ h2 {
 }
 
 .img-thumb {
-    max-width: 40vw;
+    max-width: 150px;
     max-height: 150px;
     display: block;
     padding-top: 20px;
+    padding: 5px;
+    overflow: hidden;
 }
