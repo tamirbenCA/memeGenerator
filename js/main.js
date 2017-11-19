@@ -1,17 +1,3 @@
-// V: Dynamic canvas - the canvas should be in same RATIO as original img.
-// V: fix the dropdown menu for font, clikable and not hover.
-// V: shadow button should be toggled on/off. i can now only turn it on.
-// TOOD: nav-bar
-// TODO: about us section
-// V: upload a file.
-// TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
-// V: tag cloud.
-// V: save the file.
-// V: the file saves is 300x150px which is the canvas size. fix it so it would save full size img.
-
-
-
-
 'use strict'
 
 var gImgs = [
@@ -123,8 +109,8 @@ function renderSearch() {
 
 
 function selectImg(elImg, idx) {
-    // console.log('elImg', elImg);
-    // console.log('idx', idx);
+    var elSection = document.querySelector('.meme-section');
+    elSection.classList.remove('hide-meme-section')
     elImg.classList.remove('img-thumb');
     gElCanvas.width  = elImg.width;
     gElCanvas.height = elImg.height;
@@ -313,11 +299,6 @@ function moveText(direction, rowIdx) {
 }
 
 
-
-
-
-
-
 function countWordApperances() {
     var countWordApperances = {};
 
@@ -389,5 +370,7 @@ function handleImage(e){
             gMeme.elImg = img;
         }
     }
-    reader.readAsDataURL(e.target.files[0]);     
+    reader.readAsDataURL(e.target.files[0]);
+    var elSection = document.querySelector('.meme-section');
+    elSection.classList.remove('hide-meme-section')     
 }
