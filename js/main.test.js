@@ -1,3 +1,17 @@
+// TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
+// V: fix the dropdown menu for font, clikable and not hover.
+// V: shadow button should be toggled on/off. i can now only turn it on.
+// TOOD: nav-bar
+// TODO: about us section
+// V: upload a file.
+// TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
+// V: tag cloud.
+// V: save the file.
+// TODO: the file saves is 300x150px which is the canvas size. fix it so it would save full size img.
+
+
+
+
 'use strict'
 
 var gImgs = [
@@ -39,7 +53,7 @@ var gMeme = {
     txts: [{
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -49,7 +63,7 @@ var gMeme = {
     {
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -64,8 +78,8 @@ var gCtx;
 
 function initPage() {
     renderGallery(gImgs);
-    gElCanvas = document.querySelector('#canvas');
-    gCtx = gElCanvas.getContext('2d');
+    gElCanvas = document.querySelector('#canvas');  
+    gCtx = gElCanvas.getContext('2d'); 
 }
 
 
@@ -111,12 +125,16 @@ function renderSearch() {
 function selectImg(elImg, idx) {
     // console.log('elImg', elImg);
     // console.log('idx', idx);
-
+    elImg.classList.remove('img-thumb');
+    gElCanvas.width  = elImg.width;
+    gElCanvas.height = elImg.height;
+    
     // draw selcted img on canvas
     gMeme.selectedImgId = idx;
     gMeme.elImg = elImg;
     setGMeme();
     renderImg();
+    elImg.classList.add('img-thumb');
 }
 
 
@@ -127,15 +145,14 @@ function renderImg() {
 
 function setGMeme() {
     gMeme.txts[0].x = gElCanvas.width / 2;
-    gMeme.txts[0].y = 0;
+    gMeme.txts[0].y = 0 + 10;                   // padding-top top row
     gMeme.txts[1].x = gElCanvas.width / 2;
-    gMeme.txts[1].y = gElCanvas.height;
+    gMeme.txts[1].y = gElCanvas.height - 10;    // padding-bottom bottom row
 }
 
 
-
 function renderRow() {
-    gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
 
@@ -164,15 +181,14 @@ function renderRow() {
     gCtx.textAlign = gMeme.txts[1].align;
     gCtx.textBaseline = 'bottom';
     gCtx.shadowColor = 'black';
-    gCtx.shadowBlur = gMeme.txts[1].shadow;
+    gCtx.shadowBlur = gMeme.txts[1].shadow;    
 
 
     var elBottomInput = document.querySelector('.input-bottom');
     // console.log('bottom text', elBottomText)
     var bottomText = elBottomInput.value;
-    gMeme.txts[1].line = bottomText;
+    gMeme.txts[1].line = bottomText;    
 
-    // wrapText(ctx, bottomText, x, y, 300, 28, true);
     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, 300, 28, true);
 }
 
@@ -213,10 +229,10 @@ function alignText(alignment, rowIdx) {
     gMeme.txts[rowIdx].align = alignment;
     switch (alignment) {
         case 'right':
-            gMeme.txts[rowIdx].x = gElCanvas.width;
+            gMeme.txts[rowIdx].x = gElCanvas.width - 5;
             break;
         case 'left':
-            gMeme.txts[rowIdx].x = 0;
+            gMeme.txts[rowIdx].x = 0 + 5;
             break;
         case 'center':
             gMeme.txts[rowIdx].x = gElCanvas.width / 2;
@@ -243,7 +259,7 @@ function changeColor(value, rowIdx) {
 }
 
 function dismissRow(rowIdx) {
-    console.log('dismiss row:', rowIdx);
+    // console.log('dismiss row:', rowIdx);
     var txt = {
         line: '',
         font: 'sans-serif',
@@ -252,7 +268,7 @@ function dismissRow(rowIdx) {
         color: 'white',
         x: '',
         y: '',
-    }
+        }
     gMeme.txts.splice(rowIdx, 1, txt);
     alignText('center', rowIdx);
     var elColor;
@@ -264,14 +280,16 @@ function dismissRow(rowIdx) {
         elColor = document.querySelector('.bottom-color');
         elInput = document.querySelector('.input-bottom');
     }
-    elColor.value = "#ffffff";
-    elInput.value = "";
+    elColor.value="#ffffff";
+    elInput.value="";
     renderRow();
 }
 
-//TOFIX: HOW TO TOGGLE THIS???
 function shadowEffect(rowIdx) {
-    gMeme.txts[rowIdx].shadow = 20;
+    if (gMeme.txts[rowIdx].shadow === 0) {
+        gMeme.txts[rowIdx].shadow = 20; 
+    } else
+        gMeme.txts[rowIdx].shadow = 0;
     renderRow();
 }
 
@@ -294,12 +312,12 @@ function countWordApperances() {
 function tagCloud() {
     var elGallery = document.querySelector('.meme-gallery');
     var keyWords = countWordApperances();
-    var strHtmls = '';
+    var strHtmls = '';    
     // console.log(keyWords)
-
+    
     for (var word in keyWords) {
         // console.log(word, keyWords[word]);
-        var strHtml = ' <p class="key-size' + keyWords[word] +
+        var strHtml = ' <p class="key-size' + keyWords[word] + 
             '" onclick="setSearch(\'' + word + '\')" > ' + word + ' </p>';
         strHtmls += strHtml;
     };
@@ -312,41 +330,40 @@ function setSearch(word) {
     renderSearch();
 }
 
+function downloadImg(elLink) {
+    elLink.href = canvas.toDataURL();
+    elLink.download = 'myMeme.jpg';
+}
 
-// function uploadImg() {
-//     var preview = document.querySelector('.imgUplaod'); //selects the query named img
-//     var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-//     var reader  = new FileReader();
-    
-//     reader.onloadend = function () {
-//         preview.src = reader.result;
-//     }
-    
-//     if (file) {
-//         reader.readAsDataURL(file); //reads the data as a URL
-//     } else {
-//         preview.src = "";
-//     }
-// }
+function showDropdown(buttonPosition) {
+    var elButton = document.querySelector(buttonPosition)
+    elButton.style.display = 'block';
+}
 
+function setFont(fontFamily, rowIdx, buttonPosition) {
+    gMeme.txts[rowIdx].font = fontFamily;
+    var elButton = document.querySelector(buttonPosition);
+    elButton.style.display = 'none';
+    renderRow();
+}
 
 
 var imageLoader = document.querySelector('#imageLoader');
 imageLoader.addEventListener('change', handleImage, false);
 
 
-
 function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
+        img.src = event.target.result;
         img.onload = function(){
             gElCanvas.width = img.width;
             gElCanvas.height = img.height;
             gCtx.drawImage(img,0,0);
+            setGMeme();
             gMeme.elImg = img;
         }
-        img.src = event.target.result;
     }
     reader.readAsDataURL(e.target.files[0]);     
 }

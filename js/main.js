@@ -1,4 +1,4 @@
-// TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
+// V: Dynamic canvas - the canvas should be in same RATIO as original img.
 // V: fix the dropdown menu for font, clikable and not hover.
 // V: shadow button should be toggled on/off. i can now only turn it on.
 // TOOD: nav-bar
@@ -7,7 +7,7 @@
 // TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
 // V: tag cloud.
 // V: save the file.
-// TODO: the file saves is 300x150px which is the canvas size. fix it so it would save full size img.
+// V: the file saves is 300x150px which is the canvas size. fix it so it would save full size img.
 
 
 
@@ -53,7 +53,7 @@ var gMeme = {
     txts: [{
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -63,7 +63,7 @@ var gMeme = {
     {
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -125,12 +125,16 @@ function renderSearch() {
 function selectImg(elImg, idx) {
     // console.log('elImg', elImg);
     // console.log('idx', idx);
-
+    elImg.classList.remove('img-thumb');
+    gElCanvas.width  = elImg.width;
+    gElCanvas.height = elImg.height;
+    
     // draw selcted img on canvas
     gMeme.selectedImgId = idx;
     gMeme.elImg = elImg;
     setGMeme();
     renderImg();
+    elImg.classList.add('img-thumb');
 }
 
 
