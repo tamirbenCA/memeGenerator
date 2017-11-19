@@ -1,18 +1,38 @@
 body {
-    background-color: #cacaca;
+    /* background-color: #cacaca; */
+    margin: 0;
 }
 
-h2 {
+header {
+    background-color: #323232;
+    max-height: 125px;
+    min-height: 62px;
+    max-width: 1280px;
+    align-content: center;
+    display: flex;
+    align-content: center;
+    color: #ffffff;
+    
+}
+
+section {
+    margin: 5px;
+}
+
+/* h2 {
     color: #ffffff;
     text-shadow: 0px 0px 4px #ffffff;
     text-align: center;
     font-size: 36px;
     font-family: 'Shrikhand', cursive;
-}
+} */
 
 .meme-generator {
+    margin-top: 40px;
     display: flex;
     justify-content: space-around;
+    /* height: 0px;
+    display: none; */
 }
 /* .meme-generator .hidden {
     height: 0px;
@@ -21,10 +41,9 @@ h2 {
 #canvas {
     display: flex;
     background: #ffffff;
-    /* width: 500px; */
-    /* height: 350px; */
-    max-width: 500px;
-    /* direction: rtl; */
+    width: 500px;
+    height: 300px;
+    direction: rtl;
 }
 
 .meme-row {
@@ -52,10 +71,12 @@ h2 {
 }
 
 .img-thumb {
-    max-width: 40vw;
+    max-width: 150px;
     max-height: 150px;
     display: block;
     padding-top: 20px;
+    padding: 5px;
+    overflow: hidden;
 }
 
 .control {
@@ -65,10 +86,10 @@ h2 {
     justify-content: space-between
 }
 
-.editor {
-    /* display: flex; */
-    /* justify-content: space-between; */
-}
+/* .editor {
+    display: flex;
+    justify-content: space-between;
+} */
 
 .edit-buttons {
     display: flex;
@@ -162,6 +183,12 @@ button {
 .tooltip {
     position: relative;
     display: inline-block;
+    border-style: solid;
+	border-color: #eeeeee #999999 #999999 #eeeeee;
+	background-color: #cccccc;
+    border-width: 2px;
+    cursor: pointer;
+    border-radius: 10%;
 }
 
 .tooltip .tooltiptext {
@@ -218,6 +245,57 @@ button {
     z-index: 1;
     cursor: pointer;
 }
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-top: 15px solid #323232;
+    position: absolute;
+    margin-top: 61px; 
+    right: 50%;
+}
+
+header img {
+    margin-top: 10;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 49%;
+}
+
+a:link {
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.2s;
+    text-transform: uppercase;
+    font-family: 'Comfortaa', cursive;
+    font-size: 14px;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #2db297;
+}
+
+
+
+/* .logo {
+    background-image:url('../img/logo.png');
+    right: 50%;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+} */
+
 /* 
 .dropdown {
     position: relative;

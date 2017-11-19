@@ -7,15 +7,18 @@
     <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
 
 </head>
 
 <body onload="initPage()">
     <header>
-        <h2>Meme Generator</h2>
+        <div class="arrow-down"></div>
+        <div class="link1"><a href="/">Meme generator</a></div>
+        <img src="img/logo.png"> 
+        <div class="link2"><a href="/">About us</a></div>
     </header>
-
+    
     <!-- add class hidden and remove class by js -->
     <section>
     <section class="meme-generator">
@@ -109,8 +112,9 @@
                     </section>
                 </div>
         </div>
+        <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
     </section>
-    <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
+    <!-- <a href="#" id="download" onclick="downloadImg(this)">Download image</a> -->
     </section>
 
     <input type="file" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
