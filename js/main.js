@@ -1,6 +1,6 @@
 // TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
 // TODO: fix the dropdown menu for font, clikable and not hover.
-// TODO: shadow button should be toggled on/off. i can now only turn it on.
+// V: shadow button should be toggled on/off. i can now only turn it on.
 // TOOD: nav-bar
 // TODO: about us section
 // TODO: upload a file.
@@ -147,15 +147,13 @@ function setGMeme() {
 }
 
 
-// function 
 function renderRow() {
-    gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
 
     // global properties and upper text properties  
     gCtx.lineWidth = 4;
-    // ctx.font = '20pt sans-serif';
     gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
     gCtx.strokeStyle = 'black';
     gCtx.fillStyle = gMeme.txts[0].color;
@@ -187,7 +185,6 @@ function renderRow() {
     var bottomText = elBottomInput.value;
     gMeme.txts[1].line = bottomText;    
 
-    // wrapText(ctx, bottomText, x, y, 300, 28, true);
     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, 300, 28, true);
 }
 
@@ -284,9 +281,11 @@ function dismissRow(rowIdx) {
     renderRow();
 }
 
-//TOFIX: HOW TO TOGGLE THIS???
 function shadowEffect(rowIdx) {
-    gMeme.txts[rowIdx].shadow = 20;
+    if (gMeme.txts[rowIdx].shadow === 0) {
+        gMeme.txts[rowIdx].shadow = 20; 
+    } else
+        gMeme.txts[rowIdx].shadow = 0;
     renderRow();
 }
 
@@ -330,4 +329,16 @@ function setSearch(word) {
 function downloadImg(elLink) {
     elLink.href = canvas.toDataURL();
     elLink.download = 'myMeme.jpg';
+}
+
+function showDropdown(buttonPosition) {
+    var elButton = document.querySelector(buttonPosition)
+    elButton.style.display = 'block';
+}
+
+function setFont(fontFamily, rowIdx, buttonPosition) {
+    gMeme.txts[rowIdx].font = fontFamily;
+    var elButton = document.querySelector(buttonPosition);
+    elButton.style.display = 'none';
+    renderRow();
 }
