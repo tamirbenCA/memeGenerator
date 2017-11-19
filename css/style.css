@@ -44,7 +44,14 @@ section {
     max-width: 500px;
     /* max-height: 300px; */
     height: 300px;
-    /* direction: rtl; */
+}
+
+.canvas-rtl {
+    direction: rtl;
+}
+
+.canvas-ltr {
+    direction: ltr;
 }
 
 .meme-row {
@@ -110,7 +117,14 @@ section {
     font-size:13px;color:gray;
     outline:0;  
     width: 400px;
+}
+
+.input-rtl {
     direction: rtl;
+}
+
+.input-ltr {
+    direction: ltr;
 }
 
 .font-color {
@@ -181,7 +195,6 @@ button {
     outline:0;
 }
 
-/* Tooltip text */
 .move-right {
     border:1px solid #f5f5f5;
     background-image:url('../img/icons/right.png');
@@ -212,6 +225,16 @@ button {
     background-size: 100%;
     background-repeat:no-repeat;
     outline:0;
+}
+
+.text-direction {
+    border:1px solid #f5f5f5;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+    background-image:url('../img/icons/text-direction.png');
+    width: 50px;
+    height: 50px;
 }
 
 .buttons-movement {

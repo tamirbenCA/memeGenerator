@@ -25,14 +25,14 @@
         <section class="meme-generator">
             <div class="canvas-containor">
             <!-- add class hidden and remove class by js -->
-            <canvas id="canvas" width="500" height="350">
+            <canvas class="canvas-rtl" id="canvas" width="500" height="350">
                 Sorry, no canvas available
             </canvas>
             </div>
             <div class="control">
                 <div class="editor">
                     <div>
-                        <input type="text" class="input-text input-top" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                        <input type="text" class="input-text input-top input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
                     </div>
                     <!-- <section class="top-buttons"> -->
                     <section class="edit-buttons">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="editor">
                         <div>
-                            <input type="text" class="input-text input-bottom" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                            <input type="text" class="input-text input-bottom input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
                         </div>
                         <section class="bottom-buttons">
                         <section class="edit-buttons">
@@ -91,6 +91,7 @@
                             <button class="move-left" onclick="moveText('left', 1)"></button>
                         </section>
                     </section>                   
+                    <button class="text-direction" onclick="textDirection()"></button>                        
                     </div>
             </div>
         </section>
