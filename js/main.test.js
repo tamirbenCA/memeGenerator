@@ -1,3 +1,17 @@
+// TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
+// V: fix the dropdown menu for font, clikable and not hover.
+// V: shadow button should be toggled on/off. i can now only turn it on.
+// TOOD: nav-bar
+// TODO: about us section
+// V: upload a file.
+// TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
+// V: tag cloud.
+// V: save the file.
+// TODO: the file saves is 300x150px which is the canvas size. fix it so it would save full size img.
+
+
+
+
 'use strict'
 
 var gImgs = [
@@ -39,7 +53,7 @@ var gMeme = {
     txts: [{
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -49,7 +63,7 @@ var gMeme = {
     {
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -111,12 +125,16 @@ function renderSearch() {
 function selectImg(elImg, idx) {
     // console.log('elImg', elImg);
     // console.log('idx', idx);
-
+    elImg.classList.remove('img-thumb');
+    gElCanvas.width  = elImg.width;
+    gElCanvas.height = elImg.height;
+    
     // draw selcted img on canvas
     gMeme.selectedImgId = idx;
     gMeme.elImg = elImg;
     setGMeme();
     renderImg();
+    elImg.classList.add('img-thumb');
 }
 
 
@@ -127,21 +145,19 @@ function renderImg() {
 
 function setGMeme() {
     gMeme.txts[0].x = gElCanvas.width / 2;
-    gMeme.txts[0].y = 0;
+    gMeme.txts[0].y = 0 + 10;                   // padding-top top row
     gMeme.txts[1].x = gElCanvas.width / 2;
-    gMeme.txts[1].y = gElCanvas.height;
+    gMeme.txts[1].y = gElCanvas.height - 10;    // padding-bottom bottom row
 }
 
 
-// function 
 function renderRow() {
-    gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
 
     // global properties and upper text properties  
     gCtx.lineWidth = 4;
-    // ctx.font = '20pt sans-serif';
     gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
     gCtx.strokeStyle = 'black';
     gCtx.fillStyle = gMeme.txts[0].color;
@@ -173,7 +189,6 @@ function renderRow() {
     var bottomText = elBottomInput.value;
     gMeme.txts[1].line = bottomText;    
 
-    // wrapText(ctx, bottomText, x, y, 300, 28, true);
     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, 300, 28, true);
 }
 
@@ -214,10 +229,10 @@ function alignText(alignment, rowIdx) {
     gMeme.txts[rowIdx].align = alignment;
     switch (alignment) {
         case 'right':
-            gMeme.txts[rowIdx].x = gElCanvas.width;
+            gMeme.txts[rowIdx].x = gElCanvas.width - 5;
             break;
         case 'left':
-            gMeme.txts[rowIdx].x = 0;
+            gMeme.txts[rowIdx].x = 0 + 5;
             break;
         case 'center':
             gMeme.txts[rowIdx].x = gElCanvas.width / 2;
@@ -244,7 +259,7 @@ function changeColor(value, rowIdx) {
 }
 
 function dismissRow(rowIdx) {
-    console.log('dismiss row:', rowIdx);
+    // console.log('dismiss row:', rowIdx);
     var txt = {
         line: '',
         font: 'sans-serif',
@@ -270,9 +285,11 @@ function dismissRow(rowIdx) {
     renderRow();
 }
 
-//TOFIX: HOW TO TOGGLE THIS???
 function shadowEffect(rowIdx) {
-    gMeme.txts[rowIdx].shadow = 20;
+    if (gMeme.txts[rowIdx].shadow === 0) {
+        gMeme.txts[rowIdx].shadow = 20; 
+    } else
+        gMeme.txts[rowIdx].shadow = 0;
     renderRow();
 }
 
@@ -311,4 +328,42 @@ function setSearch(word) {
     var elUserSearch = document.querySelector('#userSearch');
     elUserSearch.value = word;
     renderSearch();
+}
+
+function downloadImg(elLink) {
+    elLink.href = canvas.toDataURL();
+    elLink.download = 'myMeme.jpg';
+}
+
+function showDropdown(buttonPosition) {
+    var elButton = document.querySelector(buttonPosition)
+    elButton.style.display = 'block';
+}
+
+function setFont(fontFamily, rowIdx, buttonPosition) {
+    gMeme.txts[rowIdx].font = fontFamily;
+    var elButton = document.querySelector(buttonPosition);
+    elButton.style.display = 'none';
+    renderRow();
+}
+
+
+var imageLoader = document.querySelector('#imageLoader');
+imageLoader.addEventListener('change', handleImage, false);
+
+
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.src = event.target.result;
+        img.onload = function(){
+            gElCanvas.width = img.width;
+            gElCanvas.height = img.height;
+            gCtx.drawImage(img,0,0);
+            setGMeme();
+            gMeme.elImg = img;
+        }
+    }
+    reader.readAsDataURL(e.target.files[0]);     
 }
