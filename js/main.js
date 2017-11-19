@@ -172,7 +172,7 @@ function renderRow() {
     gMeme.txts[0].line = topText;
     // console.log('top text', topText);
 
-    wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, 300, 28, false);
+    wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, gMeme.width, 28, false);
 
     // bottom text properties
     gCtx.font = gMeme.txts[1].size + 'pt ' + gMeme.txts[1].font;
@@ -189,7 +189,7 @@ function renderRow() {
     var bottomText = elBottomInput.value;
     gMeme.txts[1].line = bottomText;    
 
-    wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, 300, 28, true);
+    wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, gMeme.width, 28, true);
 }
 
 
