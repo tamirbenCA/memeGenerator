@@ -39,9 +39,16 @@
                     <button class="align-left tooltip" onclick="alignText('left', 0)">
                         <span class="tooltiptext">יישור לשמאל</span>
                     </button>
-                    <button class="font-type tooltip">
+                    <div class="dropdown">
+                    <button class="font-type tooltip" onclick="showDropdown('.dropdown-content-top')">
                         <span class="tooltiptext">סוג פונט</span>
                     </button>                       
+                        <div class="dropdown-content dropdown-content-top">
+                            <p onclick="setFont('Sans-Serif', 0, '.dropdown-content-top')">Sans-Serif</p>
+                            <p onclick="setFont('Verdana', 0, '.dropdown-content-top')">Verdana</p>
+                            <p onclick="setFont('Courier New bold', 0, '.dropdown-content-top')">Courier New</p>
+                        </div>
+                    </div>
                     <button class="font-inc tooltip" onclick="changeFontSize('inc', 0)">
                         <span class="tooltiptext">הגדל פונט</span>
                     </button>
@@ -73,9 +80,16 @@
                         <button class="align-left tooltip" onclick="alignText('left', 1)">
                             <span class="tooltiptext">יישור לשמאל</span>
                         </button>
-                        <button class="font-type tooltip">
+                        <div class="dropdown">                               
+                        <button class="font-type tooltip" onclick="showDropdown('.dropdown-content-bottom')">
                             <span class="tooltiptext">סוג פונט</span>
-                        </button>
+                        </button>                       
+                            <div class="dropdown-content dropdown-content-bottom">
+                                <p onclick="setFont('Sans-Serif', 1, '.dropdown-content-bottom')">Sans-Serif</p>
+                                <p onclick="setFont('Verdana', 1, '.dropdown-content-bottom')">Verdana</p>
+                                <p onclick="setFont('Courier New bold', 1, '.dropdown-content-bottom')">Courier New</p>
+                            </div>
+                        </div>
                         <button class="font-inc tooltip" onclick="changeFontSize('inc', 1)">
                             <span class="tooltiptext">הגדל פונט</span>
                         </button>
