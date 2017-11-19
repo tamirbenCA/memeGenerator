@@ -1,9 +1,9 @@
 // TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
-// TODO: fix the dropdown menu for font, clikable and not hover.
+// V: fix the dropdown menu for font, clikable and not hover.
 // V: shadow button should be toggled on/off. i can now only turn it on.
 // TOOD: nav-bar
 // TODO: about us section
-// TODO: upload a file.
+// V: upload a file.
 // TODO: canvas area should be height zero and open only by chosing an img or upload a file. 
 // V: tag cloud.
 // V: save the file.
@@ -141,9 +141,9 @@ function renderImg() {
 
 function setGMeme() {
     gMeme.txts[0].x = gElCanvas.width / 2;
-    gMeme.txts[0].y = 0;
+    gMeme.txts[0].y = 0 + 10;                   // padding-top top row
     gMeme.txts[1].x = gElCanvas.width / 2;
-    gMeme.txts[1].y = gElCanvas.height;
+    gMeme.txts[1].y = gElCanvas.height - 10;    // padding-bottom bottom row
 }
 
 
@@ -225,10 +225,10 @@ function alignText(alignment, rowIdx) {
     gMeme.txts[rowIdx].align = alignment;
     switch (alignment) {
         case 'right':
-            gMeme.txts[rowIdx].x = gElCanvas.width;
+            gMeme.txts[rowIdx].x = gElCanvas.width - 5;
             break;
         case 'left':
-            gMeme.txts[rowIdx].x = 0;
+            gMeme.txts[rowIdx].x = 0 + 5;
             break;
         case 'center':
             gMeme.txts[rowIdx].x = gElCanvas.width / 2;
@@ -255,7 +255,7 @@ function changeColor(value, rowIdx) {
 }
 
 function dismissRow(rowIdx) {
-    console.log('dismiss row:', rowIdx);
+    // console.log('dismiss row:', rowIdx);
     var txt = {
         line: '',
         font: 'sans-serif',
@@ -352,6 +352,7 @@ function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
+        img.src = event.target.result;
         img.onload = function(){
             gElCanvas.width = img.width;
             gElCanvas.height = img.height;
@@ -359,7 +360,6 @@ function handleImage(e){
             setGMeme();
             gMeme.elImg = img;
         }
-        img.src = event.target.result;
     }
     reader.readAsDataURL(e.target.files[0]);     
 }
