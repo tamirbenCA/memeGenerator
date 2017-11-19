@@ -1,6 +1,6 @@
 // TODO: Dynamic canvas - the canvas should be in same RATIO as original img.
 // TODO: fix the dropdown menu for font, clikable and not hover.
-// TODO: shadow button should be toggled on/off. i can now only turn it on.
+// V: shadow button should be toggled on/off. i can now only turn it on.
 // TOOD: nav-bar
 // TODO: about us section
 // TODO: upload a file.
@@ -149,7 +149,7 @@ function setGMeme() {
 
 // function 
 function renderRow() {
-    gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
 
@@ -286,7 +286,10 @@ function dismissRow(rowIdx) {
 
 //TOFIX: HOW TO TOGGLE THIS???
 function shadowEffect(rowIdx) {
-    gMeme.txts[rowIdx].shadow = 20;
+    if (gMeme.txts[rowIdx].shadow === 0) {
+        gMeme.txts[rowIdx].shadow = 20; 
+    } else
+        gMeme.txts[rowIdx].shadow = 0;
     renderRow();
 }
 
