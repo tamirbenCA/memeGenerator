@@ -1,18 +1,32 @@
 body {
-    background-color: #cacaca;
+    /* background-color: #cacaca; */
+    margin: 0;
 }
 
-h2 {
+header {
+    background-color: #323232;
+    max-height: 125px;
+    min-height: 50px;
+    max-width: 1280px;
+}
+
+section {
+    margin: 5px;
+}
+
+/* h2 {
     color: #ffffff;
     text-shadow: 0px 0px 4px #ffffff;
     text-align: center;
     font-size: 36px;
     font-family: 'Shrikhand', cursive;
-}
+} */
 
 .meme-generator {
     display: flex;
     justify-content: space-around;
+    /* height: 0px;
+    display: none; */
 }
 /* .meme-generator .hidden {
     height: 0px;
@@ -22,7 +36,7 @@ h2 {
     display: flex;
     background: #ffffff;
     width: 500px;
-    height: 350px;
+    height: 300px;
     direction: rtl;
 }
 
@@ -55,11 +69,8 @@ h2 {
     max-height: 150px;
     display: block;
     padding-top: 20px;
-<<<<<<< HEAD
     padding: 5px;
     overflow: hidden;
-}
-=======
 }
 
 .control {
@@ -69,10 +80,10 @@ h2 {
     justify-content: space-between
 }
 
-.editor {
-    /* display: flex; */
-    /* justify-content: space-between; */
-}
+/* .editor {
+    display: flex;
+    justify-content: space-between;
+} */
 
 .edit-buttons {
     display: flex;
@@ -166,6 +177,12 @@ button {
 .tooltip {
     position: relative;
     display: inline-block;
+    border-style: solid;
+	border-color: #eeeeee #999999 #999999 #eeeeee;
+	background-color: #cccccc;
+    border-width: 2px;
+    cursor: pointer;
+    border-radius: 10%;
 }
 
 .tooltip .tooltiptext {
@@ -196,9 +213,6 @@ button {
     padding-bottom: 30px;
 }
 
-<<<<<<< HEAD
->>>>>>> 48a5eb4d7fa3bc899955ac0f151e4012fb14d25e
-=======
 .key-size1 {
     font-size: inherit;
     cursor: pointer;
@@ -214,4 +228,3 @@ button {
     font-size: 40px;
     cursor: pointer;
 }
->>>>>>> 702016f9591dc47a33ceee09a46626ed637bad6a
