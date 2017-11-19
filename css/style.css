@@ -72,14 +72,16 @@ section {
 }
 
 .img-thumb {
-    max-width: 150px;
-    max-height: 150px;
-    display: block;
-    padding-top: 20px;
-    padding: 5px;
-    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 20px;
+    margin: 5px;
+    /* overflow: hidden; */
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);    
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    
+
 }
 
 .control {
@@ -368,6 +370,7 @@ a:hover {
     display: flex;
     /* flex-wrap: wrap; */
     justify-content: space-around;
+    color: #ffffff;
 }
 
 .link1 {
