@@ -6,8 +6,13 @@ body {
 header {
     background-color: #323232;
     max-height: 125px;
-    min-height: 50px;
+    min-height: 62px;
     max-width: 1280px;
+    align-content: center;
+    display: flex;
+    align-content: center;
+    color: #ffffff;
+    
 }
 
 section {
@@ -23,6 +28,7 @@ section {
 } */
 
 .meme-generator {
+    margin-top: 40px;
     display: flex;
     justify-content: space-around;
     /* height: 0px;
@@ -239,6 +245,57 @@ button {
     z-index: 1;
     cursor: pointer;
 }
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-top: 15px solid #323232;
+    position: absolute;
+    margin-top: 61px; 
+    right: 50%;
+}
+
+header img {
+    margin-top: 10;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 49%;
+}
+
+a:link {
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.2s;
+    text-transform: uppercase;
+    font-family: 'Comfortaa', cursive;
+    font-size: 14px;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #2db297;
+}
+
+
+
+/* .logo {
+    background-image:url('../img/logo.png');
+    right: 50%;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    outline:0;
+} */
+
 /* 
 .dropdown {
     position: relative;
