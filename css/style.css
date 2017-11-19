@@ -289,27 +289,108 @@ a:hover {
 }
 
 #about-us {
-    min-height: 250px;
+    min-height: 200px;
     max-height: 700px;
     background-color: #2db297;
+    padding: 15px;
 }
 
+/* #about-us img {
+    left: 10%;
+    position: absolute;
+    float: left;
+} */
+
 #about-us2 {
-    min-height: 250px;
+    min-height: 200px;
     max-height: 700px;
     background-color: #323232;
 }
 
-/* .logo {
-    background-image:url('../img/logo.png');
-    right: 50%;
-    background-size: 100%;
-    background-repeat:no-repeat;
-    outline:0;
-} */
-
-/* 
-.dropdown {
+.link1 {
     position: relative;
-    display: inline-block;
-} */
+    left: 26%;
+    top: 22px;
+}
+
+.link2 {
+    position: relative;
+    left: 48%;
+    top: 22px;
+}
+
+.hexagon1 {
+    position: absolute;
+    width: 140px; 
+    height: 80.83px;
+    margin: 40.41px 0;
+    background-image: url(../img/ben_about_us.jpg);
+    background-size: auto 161.6581px;
+    background-position: center;
+
+  }
+  
+  .hexTop1,
+  .hexBottom1 {
+    position: absolute;
+    z-index: 1;
+    width: 98.99px;
+    height: 98.99px;
+    overflow: hidden;
+    -webkit-transform: scaleY(0.5774) rotate(-45deg);
+    -ms-transform: scaleY(0.5774) rotate(-45deg);
+    transform: scaleY(0.5774) rotate(-45deg);
+    background: inherit;
+    left: 20.50px;
+  }
+  
+  /*counter transform the bg image on the caps*/
+  .hexTop1:after,
+  .hexBottom1:after {
+    content: "";
+    position: absolute;
+    width: 140.0000px;
+    height: 80.82903768654761px;
+    -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-40.4145px);
+    -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-40.4145px);
+    transform:          rotate(45deg) scaleY(1.7321) translateY(-40.4145px);
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    background: inherit;
+  }
+  
+  .hexTop1 {
+    top: -49.4975px;
+  }
+  
+  .hexTop1:after {
+    background-position: center top;
+  }
+  
+  .hexBottom1 {
+    bottom: -49.4975px;
+  }
+  
+  .hexBottom1:after {
+    background-position: center bottom;
+  }
+  
+  .hexagon1:after {
+    content: "";
+    position: absolute;
+    top: 0.0000px;
+    left: 0;
+    width: 140.0000px;
+    height: 80.8290px;
+    z-index: 2;
+    background: inherit;
+  }
+
+@media screen and (max-width: 480px) {
+    /* start working on responsive design */
+    header img {
+        justify-content: center;
+        position: absolute;
+    }
+}
