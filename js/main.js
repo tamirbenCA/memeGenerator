@@ -342,3 +342,24 @@ function setFont(fontFamily, rowIdx, buttonPosition) {
     elButton.style.display = 'none';
     renderRow();
 }
+
+
+var imageLoader = document.querySelector('#imageLoader');
+imageLoader.addEventListener('change', handleImage, false);
+
+
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            gElCanvas.width = img.width;
+            gElCanvas.height = img.height;
+            gCtx.drawImage(img,0,0);
+            setGMeme();
+            gMeme.elImg = img;
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+}

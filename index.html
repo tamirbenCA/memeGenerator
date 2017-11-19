@@ -20,7 +20,7 @@
     <section>
     <section class="meme-generator">
         <!-- add class hidden and remove class by js -->
-        <canvas id="canvas">
+        <canvas id="canvas" width="500" height="350">
             Sorry, no canvas available
         </canvas>
         <div class="control">
@@ -111,7 +111,7 @@
     <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
     </section>
 
-    <input type="file" id="userGallery" style="color:transparent;" onchange="this.style.color = 'black';" multiple="multiple" accept="image/x-png,image/gif,image/jpeg"/>
+    <input type="file" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
     <br>
 
     <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
@@ -123,6 +123,7 @@
     <!-- meme gallery render here -->
 
     <script src="js/main.js"></script>
+    <!-- <script src="js/main.tofix.js"></script> -->
 </body>
 
 </html>

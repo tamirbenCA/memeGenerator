@@ -21,9 +21,10 @@ h2 {
 #canvas {
     display: flex;
     background: #ffffff;
-    width: 500px;
-    height: 350px;
-    direction: rtl;
+    /* width: 500px; */
+    /* height: 350px; */
+    max-width: 500px;
+    /* direction: rtl; */
 }
 
 .meme-row {

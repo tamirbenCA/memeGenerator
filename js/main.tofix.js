@@ -64,8 +64,8 @@ var gCtx;
 
 function initPage() {
     renderGallery(gImgs);
-    gElCanvas = document.querySelector('#canvas');  
-    gCtx = gElCanvas.getContext('2d'); 
+    gElCanvas = document.querySelector('#canvas');
+    gCtx = gElCanvas.getContext('2d');
 }
 
 
@@ -133,7 +133,7 @@ function setGMeme() {
 }
 
 
-// function 
+
 function renderRow() {
     gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -141,7 +141,6 @@ function renderRow() {
 
     // global properties and upper text properties  
     gCtx.lineWidth = 4;
-    // ctx.font = '20pt sans-serif';
     gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
     gCtx.strokeStyle = 'black';
     gCtx.fillStyle = gMeme.txts[0].color;
@@ -165,13 +164,13 @@ function renderRow() {
     gCtx.textAlign = gMeme.txts[1].align;
     gCtx.textBaseline = 'bottom';
     gCtx.shadowColor = 'black';
-    gCtx.shadowBlur = gMeme.txts[1].shadow;    
+    gCtx.shadowBlur = gMeme.txts[1].shadow;
 
 
     var elBottomInput = document.querySelector('.input-bottom');
     // console.log('bottom text', elBottomText)
     var bottomText = elBottomInput.value;
-    gMeme.txts[1].line = bottomText;    
+    gMeme.txts[1].line = bottomText;
 
     // wrapText(ctx, bottomText, x, y, 300, 28, true);
     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, 300, 28, true);
@@ -253,7 +252,7 @@ function dismissRow(rowIdx) {
         color: 'white',
         x: '',
         y: '',
-        }
+    }
     gMeme.txts.splice(rowIdx, 1, txt);
     alignText('center', rowIdx);
     var elColor;
@@ -265,8 +264,8 @@ function dismissRow(rowIdx) {
         elColor = document.querySelector('.bottom-color');
         elInput = document.querySelector('.input-bottom');
     }
-    elColor.value="#ffffff";
-    elInput.value="";
+    elColor.value = "#ffffff";
+    elInput.value = "";
     renderRow();
 }
 
@@ -295,12 +294,12 @@ function countWordApperances() {
 function tagCloud() {
     var elGallery = document.querySelector('.meme-gallery');
     var keyWords = countWordApperances();
-    var strHtmls = '';    
+    var strHtmls = '';
     // console.log(keyWords)
-    
+
     for (var word in keyWords) {
         // console.log(word, keyWords[word]);
-        var strHtml = ' <p class="key-size' + keyWords[word] + 
+        var strHtml = ' <p class="key-size' + keyWords[word] +
             '" onclick="setSearch(\'' + word + '\')" > ' + word + ' </p>';
         strHtmls += strHtml;
     };
@@ -311,4 +310,43 @@ function setSearch(word) {
     var elUserSearch = document.querySelector('#userSearch');
     elUserSearch.value = word;
     renderSearch();
+}
+
+
+// function uploadImg() {
+//     var preview = document.querySelector('.imgUplaod'); //selects the query named img
+//     var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+//     var reader  = new FileReader();
+    
+//     reader.onloadend = function () {
+//         preview.src = reader.result;
+//     }
+    
+//     if (file) {
+//         reader.readAsDataURL(file); //reads the data as a URL
+//     } else {
+//         preview.src = "";
+//     }
+// }
+
+
+
+var imageLoader = document.querySelector('#imageLoader');
+imageLoader.addEventListener('change', handleImage, false);
+
+
+
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            gElCanvas.width = img.width;
+            gElCanvas.height = img.height;
+            gCtx.drawImage(img,0,0);
+            gMeme.elImg = img;
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
 }
