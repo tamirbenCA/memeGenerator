@@ -293,6 +293,8 @@ a:hover {
     max-height: 700px;
     background-color: #2db297;
     padding: 15px;
+        padding-left: 12%;
+    padding-right: 12%;
 }
 
 /* #about-us img {
@@ -305,6 +307,9 @@ a:hover {
     min-height: 200px;
     max-height: 700px;
     background-color: #323232;
+    padding: 15px;
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
 .link1 {
@@ -330,8 +335,8 @@ a:hover {
 
   }
   
-  .hexTop1,
-  .hexBottom1 {
+  .hexTop,
+  .hexBottom {
     position: absolute;
     z-index: 1;
     width: 98.99px;
@@ -345,8 +350,8 @@ a:hover {
   }
   
   /*counter transform the bg image on the caps*/
-  .hexTop1:after,
-  .hexBottom1:after {
+  .hexTop:after,
+  .hexBottom:after {
     content: "";
     position: absolute;
     width: 140.0000px;
@@ -360,23 +365,45 @@ a:hover {
     background: inherit;
   }
   
-  .hexTop1 {
+  .hexTop {
     top: -49.4975px;
   }
   
-  .hexTop1:after {
+  .hexTop:after {
     background-position: center top;
   }
   
-  .hexBottom1 {
+  .hexBottom {
     bottom: -49.4975px;
   }
   
-  .hexBottom1:after {
+  .hexBottom:after {
     background-position: center bottom;
   }
   
   .hexagon1:after {
+    content: "";
+    position: absolute;
+    top: 0.0000px;
+    left: 0;
+    width: 140.0000px;
+    height: 80.8290px;
+    z-index: 2;
+    background: inherit;
+  }
+
+  .hexagon2 {
+    position: absolute;
+    width: 140px; 
+    height: 80.83px;
+    margin: 40.41px 0;
+    background-image: url(../img/ben_about_us.jpg);
+    background-size: auto 161.6581px;
+    background-position: center;
+
+  }
+
+  .hexagon2:after {
     content: "";
     position: absolute;
     top: 0.0000px;
