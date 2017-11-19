@@ -41,9 +41,9 @@ section {
 #canvas {
     display: flex;
     background: #ffffff;
-    width: 500px;
-    height: 300px;
-    direction: rtl;
+    max-width: 500px;
+    max-height: 300px;
+    /* direction: rtl; */
 }
 
 .meme-row {
