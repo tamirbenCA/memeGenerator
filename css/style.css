@@ -42,7 +42,8 @@ section {
     display: flex;
     background: #ffffff;
     max-width: 500px;
-    max-height: 300px;
+    /* max-height: 300px; */
+    height: 300px;
     /* direction: rtl; */
 }
 
@@ -267,6 +268,10 @@ header img {
     left: 40%;
     right: 50%;
     margin: 0 auto;
+}
+
+#download {
+    color: black;
 }
 
 a:link {
