@@ -294,6 +294,34 @@ function shadowEffect(rowIdx) {
 }
 
 
+function moveText(direction, rowIdx) {
+    switch (direction) {
+        case 'left':
+            console.log('left')
+            if (gMeme.txts[rowIdx].x > 0)                       gMeme.txts[rowIdx].x--;
+            break;
+        case 'right':
+        console.log('right')
+            if (gMeme.txts[rowIdx].x < gMeme.elImg.width)       gMeme.txts[rowIdx].x++;
+            break;
+        case 'up':
+        console.log('up')
+            if (gMeme.txts[rowIdx].y > 0)                       gMeme.txts[rowIdx].y--;
+            break;
+        case 'down':
+        console.log('down')
+            if (gMeme.txts[rowIdx].y < gMeme.elImg.height)      gMeme.txts[rowIdx].y++;
+            break;
+    }
+    renderRow();
+}
+
+
+
+
+
+
+
 function countWordApperances() {
     var countWordApperances = {};
 

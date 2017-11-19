@@ -33,84 +33,64 @@
                 <div class="editor">
                     <div>
                         <input type="text" class="input-text input-top" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
-                        <!-- <input type="text" class="input-text text-top" placeholder="הכנס טקסט כאן" /> -->
                     </div>
+                    <!-- <section class="top-buttons"> -->
                     <section class="edit-buttons">
-                        <button class="align-right tooltip" onclick="alignText('right', 0)">
-                            <span class="tooltiptext">יישור לימין</span>
-                        </button>
-                        <button class="align-center tooltip" onclick="alignText('center', 0)">
-                            <span class="tooltiptext">יישור למרכז</span>
-                        </button>
-                        <button class="align-left tooltip" onclick="alignText('left', 0)">
-                            <span class="tooltiptext">יישור לשמאל</span>
-                        </button>
+                        <button class="align-right" onclick="alignText('right', 0)"></button>
+                        <button class="align-center" onclick="alignText('center', 0)"></button>
+                        <button class="align-left" onclick="alignText('left', 0)"></button>
                         <div class="dropdown">
-                        <button class="font-type tooltip" onclick="showDropdown('.dropdown-content-top')">
-                            <span class="tooltiptext">סוג פונט</span>
-                        </button>                       
+                        <button class="font-type" onclick="showDropdown('.dropdown-content-top')"></button>                       
                             <div class="dropdown-content dropdown-content-top">
                                 <p onclick="setFont('Sans-Serif', 0, '.dropdown-content-top')">Sans-Serif</p>
                                 <p onclick="setFont('Verdana', 0, '.dropdown-content-top')">Verdana</p>
                                 <p onclick="setFont('Courier New bold', 0, '.dropdown-content-top')">Courier New</p>
                             </div>
                         </div>
-                        <button class="font-inc tooltip" onclick="changeFontSize('inc', 0)">
-                            <span class="tooltiptext">הגדל פונט</span>
-                        </button>
-                        <button class="font-dec tooltip" onclick="changeFontSize('dec', 0)">
-                            <span class="tooltiptext">הקטן פונט</span>
-                        </button>
-                            <input type="color" class="font-color tooltip top-color" value="#ffffff" onchange="changeColor(value, 0)">
-                                <!-- <span class="tooltiptext">צבע פונט</span> -->
-                        <button class="shadow tooltip" onclick="shadowEffect(0)">
-                            <span class="tooltiptext">הוסף / הסר אפקט צל</span>
-                        </button>
-                        <button class="trash tooltip" onclick="dismissRow(0)">
-                            <span class="tooltiptext">מחק</span>
-                        </button>
+                        <button class="font-inc" onclick="changeFontSize('inc', 0)"></button>
+                        <button class="font-dec" onclick="changeFontSize('dec', 0)"></button>
+                            <input type="color" class="font-color top-color" value="#ffffff" onchange="changeColor(value, 0)">
+                        <button class="shadow" onclick="shadowEffect(0)"></button>
+                        <button class="trash" onclick="dismissRow(0)"></button>
                     </section>
+                    <section class="buttons-movement">
+                        <button class="move-right" onclick="moveText('right', 0)"></button>
+                        <button class="move-up" onclick="moveText('up', 0)"></button>
+                        <button class="move-down" onclick="moveText('down', 0)"></button>
+                        <button class="move-left" onclick="moveText('left', 0)"></button>
+                    </section>
+                <!-- </section> -->
                 </div>
                 <div class="editor">
                         <div>
                             <input type="text" class="input-text input-bottom" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
-                            <!-- <input type="text" class="input-text text-bottom" placeholder="הכנס טקסט כאן" /> -->
                         </div>
+                        <section class="bottom-buttons">
                         <section class="edit-buttons">
-                            <button class="align-right tooltip" onclick="alignText('right', 1)">
-                                <span class="tooltiptext">יישור לימין</span>
-                            </button>
-                            <button class="align-center tooltip" onclick="alignText('center', 1)">
-                                <span class="tooltiptext">יישור למרכז</span>
-                            </button>
-                            <button class="align-left tooltip" onclick="alignText('left', 1)">
-                                <span class="tooltiptext">יישור לשמאל</span>
-                            </button>
+                            <button class="align-right" onclick="alignText('right', 1)"></button>
+                            <button class="align-center" onclick="alignText('center', 1)"></button>
+                            <button class="align-left" onclick="alignText('left', 1)"></button>
                             <div class="dropdown">                               
-                            <button class="font-type tooltip" onclick="showDropdown('.dropdown-content-bottom')">
-                                <span class="tooltiptext">סוג פונט</span>
-                            </button>                       
+                            <button class="font-type" onclick="showDropdown('.dropdown-content-bottom')"></button>                       
                                 <div class="dropdown-content dropdown-content-bottom">
                                     <p onclick="setFont('Sans-Serif', 1, '.dropdown-content-bottom')">Sans-Serif</p>
                                     <p onclick="setFont('Verdana', 1, '.dropdown-content-bottom')">Verdana</p>
                                     <p onclick="setFont('Courier New bold', 1, '.dropdown-content-bottom')">Courier New</p>
                                 </div>
                             </div>
-                            <button class="font-inc tooltip" onclick="changeFontSize('inc', 1)">
-                                <span class="tooltiptext">הגדל פונט</span>
-                            </button>
-                            <button class="font-dec tooltip" onclick="changeFontSize('dec', 1)">
-                                <span class="tooltiptext">הקטן פונט</span>
-                            </button>
-                                <input type="color" class="font-color tooltip bottom-color" value="#ffffff" onchange="changeColor(value, 1)">
-                                    <!-- <span class="tooltiptext">צבע פונט</span> -->
-                            <button class="shadow tooltip" onclick="shadowEffect(1)">
-                                <span class="tooltiptext">הוסף / הסר אפקט צל</span>
-                            </button>
-                            <button class="trash tooltip" onclick="dismissRow(1)">
-                                <span class="tooltiptext">מחק</span>
-                            </button>
+                            <button class="font-inc" onclick="changeFontSize('inc', 1)"></button>
+                            <button class="font-dec" onclick="changeFontSize('dec', 1)"></button>
+                                <input type="color" class="font-color bottom-color" value="#ffffff" onchange="changeColor(value, 1)">
+                            <button class="shadow" onclick="shadowEffect(1)"></button>
+                            <button class="trash" onclick="dismissRow(1)"></button>
                         </section>
+                        <section class="buttons-movement">
+                            <button class="move-right" onclick="moveText('right', 1)"></button>
+                            <button class="move-up" onclick="moveText('up', 1)"></button>
+                            <button class="move-down" onclick="moveText('down', 1)"></button>
+                            <button class="move-left" onclick="moveText('left', 1)"></button>
+                        </section>
+                    </section>                   
                     </div>
             </div>
         </section>
