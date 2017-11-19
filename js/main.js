@@ -107,7 +107,7 @@ function renderSearch() {
     else renderGallery(gImgs)
 }
 
-
+//CR: You can use naturalheight and width instead of playing with classes.
 function selectImg(elImg, idx) {
     var elSection = document.querySelector('.meme-section');
     elSection.classList.remove('hide-meme-section')
@@ -136,7 +136,7 @@ function setGMeme() {
     gMeme.txts[1].y = gElCanvas.height - 10;    // padding-bottom bottom row
 }
 
-
+// CR : better in loop,
 function renderRow() {
     // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -249,7 +249,7 @@ function dismissRow(rowIdx) {
     var txt = {
         line: '',
         font: 'sans-serif',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: '',
@@ -274,8 +274,7 @@ function dismissRow(rowIdx) {
 function shadowEffect(rowIdx) {
     if (gMeme.txts[rowIdx].shadow === 0) {
         gMeme.txts[rowIdx].shadow = 20; 
-    } else
-        gMeme.txts[rowIdx].shadow = 0;
+    } else gMeme.txts[rowIdx].shadow = 0;
     renderRow();
 }
 
