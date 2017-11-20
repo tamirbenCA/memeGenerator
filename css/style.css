@@ -523,42 +523,57 @@ a:hover {
     height: 80.8290px;
     z-index: 2;
     background: inherit;
-  }
+}
+
+.main-nav {
+    display: none;
+}
+
+.dropdown {
+    display: none;
+}
 
 @media screen and (max-width: 480px) {
     /* start working on responsive design */
+    .logo-main {
+        display: none;
+    }
+
     header img {
-        /* justify-content: center; */
+        
         justify-content: center;
     }
+
     header {
         width: 100%;
     }
-    header a:link {
+
+    .link1 {
+        display: none;
+    }
+
+    .link2 {
         display: none;
     }
 
     .dropdown {
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
         display: block;
     }
 
+    input[type=checkbox]{
+        display: none;
+    }
 
+    ul{
+        display: none;
+    }
+
+    input[type=checkbox]:checked ~ ul {
+        display: flex;
+        flex-direction: column;
+        margin-top: 86px;
+        list-style-type: none;
+    }
 }
 
 
