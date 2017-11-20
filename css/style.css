@@ -333,7 +333,7 @@ button {
 header img {
     align-content: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #download {
@@ -386,14 +386,14 @@ a:hover {
     justify-content: space-around;
     color: #ffffff;
 }
-
+/* 
 .link1 {
     align-self: center;
 }
 
 .link2 {
     align-self: center;
-}
+} */
 
 #ben-photo {
     margin-right: 10px;
@@ -419,6 +419,8 @@ a:hover {
 .nav-bar {
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+    display: flex;
 }
 
 .mobile-icon {
@@ -450,10 +452,6 @@ ul {
     padding: 0;
     align-items: center;
 }
-
-li > a:link {
-    margin-top: 10px;
-} 
 
 
 @media screen and (max-width: 950px) {

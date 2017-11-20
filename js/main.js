@@ -456,10 +456,6 @@ function handleImage(e){
     elSection.classList.remove('hide-meme-section')     
 }
 
-
-
-
-
 function toggleMenu() {
     if (window.innerWidth < 520) {
         menuOpen = !menuOpen;
