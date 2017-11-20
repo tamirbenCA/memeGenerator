@@ -72,6 +72,7 @@ section {
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
+    align-items: baseline;
 }
 
 .img-thumb {
@@ -286,19 +287,54 @@ button {
 .key-size1 {
     font-size: inherit;
     cursor: pointer;
+    margin: 10px;
 }
 
 .key-size2 {
     font-size: 30px;
     cursor: pointer;
-
+    margin: 10px;
 }
 
 .key-size3 {
-    font-size: 40px;
+    font-size: 50px;
     cursor: pointer;
+    margin: 10px;
 }
 
+.key-size4 {
+    font-size: 70px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.upload-button {
+    width: 100px;
+    padding-top: 14px;
+    padding-bottom: 30px;
+    cursor: pointer;
+}
+.inputfile + label {
+	cursor: pointer;
+}
+
+/* .inputfile + label {
+    cursor: pointer;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: black;
+    background-color: inherit;
+    display: inline-block; */
+/* } */
 
 .dropdown-content {
     display: none;
