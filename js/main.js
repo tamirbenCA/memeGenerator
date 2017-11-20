@@ -9,12 +9,12 @@ var gImgs = [
     {
         id: 2,
         // url: 'img/2.jpg',
-        keywords: ['sound of music', 'give no fuck', 'i don\'t care']
+        keywords: ['sound', 'music', 'give', 'no', 'fuck', 'care']
     },
     {
         id: 3,
         // url: 'img/3.jpg',
-        keywords: ['no time', 'time']
+        keywords: ['no', 'time']
     },
     {
         id: 4,
@@ -24,12 +24,42 @@ var gImgs = [
     {
         id: 5,
         // url: 'img/5.jpg',
-        keywords: ['success', 'kid']
+        keywords: ['success', 'kid', 'baby']
     },
     {
         id: 6,
         // url: 'img/6.jpg',
         keywords: ['kid', 'katorza']
+    },
+    {
+        id: 7,
+        // url: 'img/7.jpg',
+        keywords: ['dog', 'happy', 'exciting']
+    },
+    {
+        id: 8,
+        // url: 'img/8.jpg',
+        keywords: ['condescending', 'wonka']
+    },
+    {
+        id: 9,
+        // url: 'img/9.jpg',
+        keywords: ['baby', 'evil', 'toddler']
+    },
+    {
+        id: 10,
+        // url: 'img/10.jpg',
+        keywords: ['cat', 'shrek', 'begging']
+    },
+    {
+        id: 11,
+        // url: 'img/11.jpg',
+        keywords: ['koala', 'suprised', 'begging']
+    },
+    {
+        id: 12,
+        // url: 'img/12.jpg',
+        keywords: ['haim hecht', 'what', 'were', 'you', 'doing']
     },
 ];
 
