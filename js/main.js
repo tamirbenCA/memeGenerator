@@ -172,7 +172,7 @@ function setGMeme() {
 
 // CR: better in loop,
 function renderRow() {
-    // gCtx.clearRect(0, 0, canvas.width, canvas.height);
+    gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
     var elTopInput = document.querySelector('.input-top');

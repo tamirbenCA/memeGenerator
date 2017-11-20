@@ -39,7 +39,7 @@
             </div>
             <div class="control">
                 <div class="editor">
-                    <div>
+                    <div class="input-containor">
                         <input type="text" class="input-text input-top input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
                     </div>
                     <!-- <section class="top-buttons"> -->
@@ -70,8 +70,8 @@
                 <!-- </section> -->
                 </div>
                 <div class="editor">
-                        <div>
-                            <input type="text" class="input-text input-bottom input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                    <div class="input-containor">
+                        <input type="text" class="input-text input-bottom input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
                         </div>
                         <section class="bottom-buttons">
                         <section class="edit-buttons">
@@ -109,12 +109,13 @@
         </section>
 
     <br>
-
+<section class="search-section">
     <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
     <!-- TO DISCUSS: add a modal for keywords??? -->
     <button class="tagCloud" onclick="tagCloud()">Tag Cloud</button>
     <input type="file" class="inputfile" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
     <button class="upload-button"><label for="imageLoader">Upload photo</label></button>
+</section>
     
 
     <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
@@ -129,19 +130,23 @@
             <!-- <div class="hexBottom"></div> -->
         <!-- </div> -->
         <!-- <div> -->
-        <img class="profile-img" src="img/ben_about_us.jpg" /> 
+        <img class="profile-img" id="ben-photo" src="img/ben_about_us.jpg" /> 
         <!-- </div> -->
         <div class="about">
             <h2>Ben Tamir</h2>
+            <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laudantium? Dolor, sit sapiente reiciendis recusandae, at molestias tenetur amet omnis ex, sint eligendi sed earum. Dignissimos repellat voluptas vero autem!
+            </p>
         </div>
         </div>
     <div id="about-us2">
         <div class="about">
             <h2>Alice Chursa</h2>
+            <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laudantium? Dolor, sit sapiente reiciendis recusandae, at molestias tenetur amet omnis ex, sint eligendi sed earum. Dignissimos repellat voluptas vero autem!
+            </p>
         </div>
-        <img class="profile-img" src="img/alice_about_us.jpg" />
+        <img class="profile-img" id="alice-photo" src="img/alice_about_us.jpg" />
         <!-- <div class="hexagon2">
             <div class="hexTop"></div>
             <div class="hexBottom"></div>
