@@ -11,7 +11,8 @@ header {
     display: flex;
     color: #ffffff;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
 }
 
 section {
@@ -426,17 +427,13 @@ a:hover {
     color: #ffffff;
 }
 
-/* .link1 {
-    position: relative;
-    left: 26%;
-    top: 22px;
+.link1 {
+    align-self: center;
 }
 
 .link2 {
-    position: relative;
-    left: 48%;
-    top: 22px;
-} */
+    align-self: center;
+}
 
 .hexagon1 {
     position: relative;
@@ -532,8 +529,7 @@ a:hover {
     /* start working on responsive design */
     header img {
         /* justify-content: center; */
-        position: absolute;
-        right: 50%;
+        justify-content: center;
     }
     header {
         width: 100%;
@@ -543,11 +539,11 @@ a:hover {
     }
 }
 
-@media screen and (max-width: 370px) {
+/* @media screen and (max-width: 370px) {
     body {
         width: 100%;
     }
-}
+} */
 
 .profile-img {
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);    
