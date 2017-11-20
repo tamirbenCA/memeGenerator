@@ -349,6 +349,7 @@ a:hover {
 .about {
     width: 70%;
     align-self: center;
+    font-family: calibri;    
 }
 
 /* #about-us img {
@@ -475,8 +476,21 @@ a:hover {
 @media screen and (max-width: 480px) {
     /* start working on responsive design */
     header img {
-        justify-content: center;
+        /* justify-content: center; */
         position: absolute;
+        right: 50%;
+    }
+    header {
+        width: 100%;
+    }
+    header a:link {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    body {
+        width: 100%;
     }
 }
 
