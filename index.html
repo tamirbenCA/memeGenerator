@@ -91,19 +91,22 @@
                             <button class="move-left" onclick="moveText('left', 1)"></button>
                         </section>
                     </section>                   
+                </div>
+                <section class="download-area">
                     <button class="text-direction" onclick="textDirection()"></button>                        
-                    </div>
+                    <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
+                </section>    
             </div>
         </section>
-        <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
         </section>
 
-    <input type="file" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
     <br>
 
     <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
     <!-- TO DISCUSS: add a modal for keywords??? -->
     <button class="tagCloud" onclick="tagCloud()">Tag Cloud</button>
+    <input type="file" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
+    
 
     <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
     <div class="meme-gallery"></div>

@@ -299,6 +299,7 @@ button {
     cursor: pointer;
 }
 
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -507,4 +508,10 @@ a:hover {
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);    
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     height: 140px;
+}
+
+.download-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

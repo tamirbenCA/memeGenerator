@@ -145,66 +145,63 @@ function renderRow() {
     // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
-// LOOP ISN't WORKING FOR BOTTOM TEXT.
-    // var elTopInput = document.querySelector('.input-top');
-    // var topText = elTopInput.value;
-    // var elBottomInput = document.querySelector('.input-bottom');
-    // var bottomText = elBottomInput.value;
-
-    // for (var i = 0; i < gMeme.txts.length; i++) {
-    //     gCtx.lineWidth = 4;
-    //     gCtx.font = gMeme.txts[i].size + 'pt ' + gMeme.txts[i].font;
-    //     gCtx.strokeStyle = 'black';
-    //     gCtx.fillStyle = gMeme.txts[i].color;
-    //     gCtx.textAlign = gMeme.txts[i].align;
-    //     gCtx.textBaseline = 'top';
-    //     gCtx.shadowColor = 'black';
-    //     gCtx.shadowBlur = gMeme.txts[i].shadow;
-    //     if (i === 0) {
-    //         gMeme.txts[i].line = topText
-    //         var fromBottom = false;
-    //     }
-    //     else if (i === 1) {
-    //         gMeme.txts[i].line = bottomText;
-    //         var fromBottom = true;
-    //     }
-    //     wrapText(gCtx, gMeme.txts[i].line, gMeme.txts[i].x, gMeme.txts[i].y, gMeme.width, 28, fromBottom);
-    // }
-
-    // global properties and upper text properties  
-    gCtx.lineWidth = 4;
-    gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
-    gCtx.strokeStyle = 'black';
-    gCtx.fillStyle = gMeme.txts[0].color;
-    gCtx.textAlign = gMeme.txts[0].align;
-    gCtx.textBaseline = 'top';
-    gCtx.shadowColor = 'black';
-    gCtx.shadowBlur = gMeme.txts[0].shadow;
-
     var elTopInput = document.querySelector('.input-top');
-    // console.log('top text element', elTopText)
     var topText = elTopInput.value;
-    gMeme.txts[0].line = topText;
-    // console.log('top text', topText);
-
-    wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, gMeme.width, 28, false);
-
-    // bottom text properties
-    gCtx.font = gMeme.txts[1].size + 'pt ' + gMeme.txts[1].font;
-    gCtx.strokeStyle = 'black';
-    gCtx.fillStyle = gMeme.txts[1].color;
-    gCtx.textAlign = gMeme.txts[1].align;
-    gCtx.textBaseline = 'bottom';
-    gCtx.shadowColor = 'black';
-    gCtx.shadowBlur = gMeme.txts[1].shadow;    
-
-
     var elBottomInput = document.querySelector('.input-bottom');
-    // console.log('bottom text', elBottomText)
     var bottomText = elBottomInput.value;
-    gMeme.txts[1].line = bottomText;    
 
-    wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, gMeme.width, 28, true);
+    for (var i = 0; i < gMeme.txts.length; i++) {
+        gCtx.lineWidth = 4;
+        gCtx.font = gMeme.txts[i].size + 'pt ' + gMeme.txts[i].font;
+        gCtx.strokeStyle = 'black';
+        gCtx.fillStyle = gMeme.txts[i].color;
+        gCtx.textAlign = gMeme.txts[i].align;
+        gCtx.shadowColor = 'black';
+        gCtx.shadowBlur = gMeme.txts[i].shadow;
+        if (i === 0) {
+            gCtx.textBaseline = 'top';
+            gMeme.txts[i].line = topText
+            var fromBottom = false;
+        }
+        else if (i === 1) {
+            gCtx.textBaseline = 'bottom';
+            gMeme.txts[i].line = bottomText;
+            var fromBottom = true;
+        }
+        wrapText(gCtx, gMeme.txts[i].line, gMeme.txts[i].x, gMeme.txts[i].y, gMeme.width, 28, fromBottom);
+    }
+
+//     // global properties and upper text properties  
+//     gCtx.lineWidth = 4;
+//     gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
+//     gCtx.strokeStyle = 'black';
+//     gCtx.fillStyle = gMeme.txts[0].color;
+//     gCtx.textAlign = gMeme.txts[0].align;
+//     gCtx.shadowColor = 'black';
+//     gCtx.shadowBlur = gMeme.txts[0].shadow;
+//     gCtx.textBaseline = 'top';
+
+//     var elTopInput = document.querySelector('.input-top');
+//     var topText = elTopInput.value;
+//     gMeme.txts[0].line = topText;
+
+//     wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, gMeme.width, 28, false);
+
+//     // bottom text properties
+//     gCtx.font = gMeme.txts[1].size + 'pt ' + gMeme.txts[1].font;
+//     gCtx.strokeStyle = 'black';
+//     gCtx.fillStyle = gMeme.txts[1].color;
+//     gCtx.textAlign = gMeme.txts[1].align;
+//     gCtx.textBaseline = 'bottom';
+//     gCtx.shadowColor = 'black';
+//     gCtx.shadowBlur = gMeme.txts[1].shadow;    
+
+
+//     var elBottomInput = document.querySelector('.input-bottom');
+//     var bottomText = elBottomInput.value;
+//     gMeme.txts[1].line = bottomText;    
+
+//     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, gMeme.width, 28, true);
 }
 
 
