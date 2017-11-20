@@ -532,8 +532,8 @@ a:hover {
     /* start working on responsive design */
     header img {
         /* justify-content: center; */
-        position: absolute;
-        right: 50%;
+        /* position: absolute; */
+        /* right: 50%; */
     }
     header {
         width: 100%;
