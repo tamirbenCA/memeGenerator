@@ -95,8 +95,11 @@ var gCtx;
 var imageLoader = document.querySelector('#imageLoader');
 imageLoader.addEventListener('change', handleImage, false);
 
-//variable for toggle menu, open menu and close menu in mobile mode.
+// variable for toggle menu, open menu and close menu in mobile mode.
 var menuOpen = false;
+
+// variable for open / close tag cloud.
+var tagView = false;
 
 
 function initPage() {
@@ -116,6 +119,7 @@ function renderGallery(imgs) {
     });
     // <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
     elGallery.innerHTML = strHtmls.join('');
+    tagView = false;
 }
 
 function renderSearch() {
@@ -160,6 +164,7 @@ function selectImg(elImg, idx) {
     elTopInput.value = '';
     var elBottomInput = document.querySelector('.input-bottom');
     elBottomInput.value = '';
+    gElCanvas.scrollIntoView();    
 }
 
 function renderImg() {
@@ -401,18 +406,24 @@ function countWordApperances() {
 }
 
 function tagCloud() {
-    var elGallery = document.querySelector('.meme-gallery');
-    var keyWords = countWordApperances();
-    var strHtmls = '';    
-    // console.log(keyWords)
-    
-    for (var word in keyWords) {
-        // console.log(word, keyWords[word]);
-        var strHtml = ' <p class="key-size' + keyWords[word] + 
-            '" onclick="setSearch(\'' + word + '\')" > ' + word + ' </p>';
-        strHtmls += strHtml;
-    };
-    elGallery.innerHTML = strHtmls;
+    if (!tagView) {
+        var elGallery = document.querySelector('.meme-gallery');
+        var keyWords = countWordApperances();
+        var strHtmls = '';    
+        // console.log(keyWords)
+        
+        for (var word in keyWords) {
+            // console.log(word, keyWords[word]);
+            var strHtml = ' <p class="key-size' + keyWords[word] + 
+                '" onclick="setSearch(\'' + word + '\')" > ' + word + ' </p>';
+            strHtmls += strHtml;
+        }
+        elGallery.innerHTML = strHtmls;
+        tagView = true;
+    } else {
+        renderGallery(gImgs);
+        tagView = false;
+    }
 }
 
 function setSearch(word) {
@@ -453,7 +464,8 @@ function handleImage(e){
     }
     reader.readAsDataURL(e.target.files[0]);
     var elSection = document.querySelector('.meme-section');
-    elSection.classList.remove('hide-meme-section')     
+    elSection.classList.remove('hide-meme-section')
+    gElCanvas.scrollIntoView();
 }
 
 function toggleMenu() {
