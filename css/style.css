@@ -8,11 +8,10 @@ header {
     max-height: 125px;
     min-height: 62px;
     max-width: 100%;
-    align-content: center;
     display: flex;
-    align-content: center;
     color: #ffffff;
-    
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 section {
@@ -324,13 +323,9 @@ button {
 } */
 
 header img {
-    margin-top: 10;
     align-content: center;
     justify-content: center;
     position: absolute;
-    top: 10px;
-    left: 40%;
-    right: 50%;
     margin: 0 auto;
 }
 
@@ -395,7 +390,7 @@ a:hover {
     color: #ffffff;
 }
 
-.link1 {
+/* .link1 {
     position: relative;
     left: 26%;
     top: 22px;
@@ -405,7 +400,7 @@ a:hover {
     position: relative;
     left: 48%;
     top: 22px;
-}
+} */
 
 .hexagon1 {
     position: relative;
