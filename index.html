@@ -25,14 +25,14 @@
         <section class="meme-generator">
             <div class="canvas-containor">
             <!-- add class hidden and remove class by js -->
-            <canvas id="canvas" width="500" height="350">
+            <canvas class="canvas-rtl" id="canvas" width="500" height="350">
                 Sorry, no canvas available
             </canvas>
             </div>
             <div class="control">
                 <div class="editor">
                     <div>
-                        <input type="text" class="input-text input-top" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                        <input type="text" class="input-text input-top input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
                     </div>
                     <!-- <section class="top-buttons"> -->
                     <section class="edit-buttons">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="editor">
                         <div>
-                            <input type="text" class="input-text input-bottom" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
+                            <input type="text" class="input-text input-bottom input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
                         </div>
                         <section class="bottom-buttons">
                         <section class="edit-buttons">
@@ -91,18 +91,22 @@
                             <button class="move-left" onclick="moveText('left', 1)"></button>
                         </section>
                     </section>                   
-                    </div>
+                </div>
+                <section class="download-area">
+                    <button class="text-direction" onclick="textDirection()"></button>                        
+                    <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
+                </section>    
             </div>
         </section>
-        <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
         </section>
 
-    <input type="file" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
     <br>
 
     <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
     <!-- TO DISCUSS: add a modal for keywords??? -->
     <button class="tagCloud" onclick="tagCloud()">Tag Cloud</button>
+    <input type="file" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
+    
 
     <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
     <div class="meme-gallery"></div>

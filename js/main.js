@@ -121,6 +121,10 @@ function selectImg(elImg, idx) {
     setGMeme();
     renderImg();
     elImg.classList.add('img-thumb');
+    var elTopInput = document.querySelector('.input-top');
+    elTopInput.value = '';
+    var elBottomInput = document.querySelector('.input-bottom');
+    elBottomInput.value = '';
 }
 
 
@@ -136,46 +140,68 @@ function setGMeme() {
     gMeme.txts[1].y = gElCanvas.height - 10;    // padding-bottom bottom row
 }
 
-// CR : better in loop,
+// CR: better in loop,
 function renderRow() {
     // gCtx.clearRect(0, 0, canvas.width, canvas.height);
     gCtx.drawImage(gMeme.elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
-
-    // global properties and upper text properties  
-    gCtx.lineWidth = 4;
-    gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
-    gCtx.strokeStyle = 'black';
-    gCtx.fillStyle = gMeme.txts[0].color;
-    gCtx.textAlign = gMeme.txts[0].align;
-    gCtx.textBaseline = 'top';
-    gCtx.shadowColor = 'black';
-    gCtx.shadowBlur = gMeme.txts[0].shadow;
-
     var elTopInput = document.querySelector('.input-top');
-    // console.log('top text element', elTopText)
     var topText = elTopInput.value;
-    gMeme.txts[0].line = topText;
-    // console.log('top text', topText);
-
-    wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, gMeme.width, 28, false);
-
-    // bottom text properties
-    gCtx.font = gMeme.txts[1].size + 'pt ' + gMeme.txts[1].font;
-    gCtx.strokeStyle = 'black';
-    gCtx.fillStyle = gMeme.txts[1].color;
-    gCtx.textAlign = gMeme.txts[1].align;
-    gCtx.textBaseline = 'bottom';
-    gCtx.shadowColor = 'black';
-    gCtx.shadowBlur = gMeme.txts[1].shadow;    
-
-
     var elBottomInput = document.querySelector('.input-bottom');
-    // console.log('bottom text', elBottomText)
     var bottomText = elBottomInput.value;
-    gMeme.txts[1].line = bottomText;    
 
-    wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, gMeme.width, 28, true);
+    for (var i = 0; i < gMeme.txts.length; i++) {
+        gCtx.lineWidth = 4;
+        gCtx.font = gMeme.txts[i].size + 'pt ' + gMeme.txts[i].font;
+        gCtx.strokeStyle = 'black';
+        gCtx.fillStyle = gMeme.txts[i].color;
+        gCtx.textAlign = gMeme.txts[i].align;
+        gCtx.shadowColor = 'black';
+        gCtx.shadowBlur = gMeme.txts[i].shadow;
+        if (i === 0) {
+            gCtx.textBaseline = 'top';
+            gMeme.txts[i].line = topText
+            var fromBottom = false;
+        }
+        else if (i === 1) {
+            gCtx.textBaseline = 'bottom';
+            gMeme.txts[i].line = bottomText;
+            var fromBottom = true;
+        }
+        wrapText(gCtx, gMeme.txts[i].line, gMeme.txts[i].x, gMeme.txts[i].y, gMeme.width, 28, fromBottom);
+    }
+
+//     // global properties and upper text properties  
+//     gCtx.lineWidth = 4;
+//     gCtx.font = gMeme.txts[0].size + 'pt ' + gMeme.txts[0].font;
+//     gCtx.strokeStyle = 'black';
+//     gCtx.fillStyle = gMeme.txts[0].color;
+//     gCtx.textAlign = gMeme.txts[0].align;
+//     gCtx.shadowColor = 'black';
+//     gCtx.shadowBlur = gMeme.txts[0].shadow;
+//     gCtx.textBaseline = 'top';
+
+//     var elTopInput = document.querySelector('.input-top');
+//     var topText = elTopInput.value;
+//     gMeme.txts[0].line = topText;
+
+//     wrapText(gCtx, gMeme.txts[0].line, gMeme.txts[0].x, gMeme.txts[0].y, gMeme.width, 28, false);
+
+//     // bottom text properties
+//     gCtx.font = gMeme.txts[1].size + 'pt ' + gMeme.txts[1].font;
+//     gCtx.strokeStyle = 'black';
+//     gCtx.fillStyle = gMeme.txts[1].color;
+//     gCtx.textAlign = gMeme.txts[1].align;
+//     gCtx.textBaseline = 'bottom';
+//     gCtx.shadowColor = 'black';
+//     gCtx.shadowBlur = gMeme.txts[1].shadow;    
+
+
+//     var elBottomInput = document.querySelector('.input-bottom');
+//     var bottomText = elBottomInput.value;
+//     gMeme.txts[1].line = bottomText;    
+
+//     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, gMeme.width, 28, true);
 }
 
 
@@ -230,10 +256,10 @@ function alignText(alignment, rowIdx) {
 function changeFontSize(change, rowIdx) {
     if (change === 'inc') {
         // console.log('inc font size');
-        gMeme.txts[rowIdx].size++;
+        gMeme.txts[rowIdx].size += 5;
     } else {
         // console.log('dec font size');
-        gMeme.txts[rowIdx].size--;
+        gMeme.txts[rowIdx].size -= 5;
     }
     renderRow();
 }
@@ -282,21 +308,54 @@ function shadowEffect(rowIdx) {
 function moveText(direction, rowIdx) {
     switch (direction) {
         case 'left':
-            if (gMeme.txts[rowIdx].x > 0)                       gMeme.txts[rowIdx].x--;
+            if (gMeme.txts[rowIdx].x > 0)                       gMeme.txts[rowIdx].x -= 5;
             break;
         case 'right':
-        if (gMeme.txts[rowIdx].x < gElCanvas.width)             gMeme.txts[rowIdx].x++;
+        if (gMeme.txts[rowIdx].x < gElCanvas.width)             gMeme.txts[rowIdx].x += 5;
             break;
         case 'up':
-            if (gMeme.txts[rowIdx].y > 0)                       gMeme.txts[rowIdx].y--;
+            if (gMeme.txts[rowIdx].y > 0)                       gMeme.txts[rowIdx].y -= 5;
             break;
         case 'down':
-            if (gMeme.txts[rowIdx].y < gElCanvas.height)        gMeme.txts[rowIdx].y++;
+            if (gMeme.txts[rowIdx].y < gElCanvas.height)        gMeme.txts[rowIdx].y += 5;
             break;
     }
     renderRow();
 }
 
+
+function textDirection() {
+    if (gElCanvas.classList.value === 'canvas-rtl') {
+        console.log('rtl')
+        gElCanvas.classList.add('canvas-ltr');
+        gElCanvas.classList.remove('canvas-rtl');
+        
+        var elInputText = document.querySelector('.input-top');
+        elInputText.placeholder = 'Enter text';
+        elInputText.classList.add('input-ltr')
+        elInputText.classList.remove('input-rtl')
+        
+        var elInputText = document.querySelector('.input-bottom');
+        elInputText.placeholder = 'Enter text';
+        elInputText.classList.add('input-ltr')
+        elInputText.classList.remove('input-rtl')
+
+    } else if (gElCanvas.classList.value === 'canvas-ltr') {
+        console.log('ltr')
+        gElCanvas.classList.add('canvas-rtl');
+        gElCanvas.classList.remove('canvas-ltr');
+        
+        var elInputText = document.querySelector('.input-top');
+        elInputText.placeholder = 'הכנס טקסט כאן'; 
+        elInputText.classList.add('input-rtl')
+        elInputText.classList.remove('input-ltr')
+
+        var elInputText = document.querySelector('.input-bottom');
+        elInputText.placeholder = 'הכנס טקסט כאן';
+        elInputText.classList.add('input-rtl')
+        elInputText.classList.remove('input-ltr')
+    }
+}
 
 function countWordApperances() {
     var countWordApperances = {};
