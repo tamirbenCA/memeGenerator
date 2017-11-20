@@ -435,73 +435,61 @@ a:hover {
     margin-left: 10px;
 }
 
-  .hexagon2:after {
-    content: "";
-    position: absolute;
-    top: 0.0000px;
-    left: 0;
-    width: 140.0000px;
-    height: 80.8290px;
-    z-index: 2;
-    background: inherit;
-}
-
-.main-nav {
-    display: none;
-}
-
-.dropdown {
-    display: none;
-}
-
-@media screen and (max-width: 480px) {
-    /* start working on responsive design */
-    .logo-main {
-        display: none;
-    }
-
-    header img {
-        
-        justify-content: center;
-    }
-
-    header {
-        width: 100%;
-    }
-
-    .link1 {
-        display: none;
-    }
-
-    .link2 {
-        display: none;
-    }
-
-    .dropdown {
-        display: block;
-    }
-
-    input[type=checkbox]{
-        display: none;
-    }
-
-    ul{
-        display: none;
-    }
-
-    input[type=checkbox]:checked ~ ul {
-        display: flex;
-        flex-direction: column;
-        margin-top: 86px;
-        list-style-type: none;
-    }
-}
-
-
 .profile-img {
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);    
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     height: 140px;
+}
+
+.download-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+
+@media screen and (max-width: 950px) {
+    .meme-generator {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-section {
+        display: flex;
+        justify-content: space-around
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* start working on responsive design */
+    header {
+        width: 100%;
+    }
+    header a:link {
+        display: none;
+    }
+    .tagCloud {
+        font-size: 12px;
+        padding: 0;
+    }
+    .upload-button {
+        font-size: 12px;
+        padding: 0;
+    }
+    #canvas {
+        height: 200px;
+    }
+    .about {
+        
+    }
+    .about p {
+        height: 50px;
+        overflow: hidden; 
+    }
+    .input-text {
+        width: 300px;
+    }
 }
 
 @media screen and (max-width: 370px) {
