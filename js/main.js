@@ -91,13 +91,19 @@ var gMeme = {
 var gElCanvas;
 var gCtx;
 
+// variable for load image from user computer.
+var imageLoader = document.querySelector('#imageLoader');
+imageLoader.addEventListener('change', handleImage, false);
+
+//variable for toggle menu, open menu and close menu in mobile mode.
+var menuOpen = false;
+
 
 function initPage() {
     renderGallery(gImgs);
     gElCanvas = document.querySelector('#canvas');  
     gCtx = gElCanvas.getContext('2d'); 
 }
-
 
 function renderGallery(imgs) {
     var elGallery = document.querySelector('.meme-gallery');
@@ -111,7 +117,6 @@ function renderGallery(imgs) {
     // <a class="meme-link" onclick="renderMeme(${(idx)})" href="#">
     elGallery.innerHTML = strHtmls.join('');
 }
-
 
 function renderSearch() {
     var elUserSearch = document.querySelector('#userSearch');
@@ -156,7 +161,6 @@ function selectImg(elImg, idx) {
     var elBottomInput = document.querySelector('.input-bottom');
     elBottomInput.value = '';
 }
-
 
 function renderImg() {
     gCtx.clearRect(0, 0, canvas.width, canvas.height);
@@ -234,7 +238,6 @@ function renderRow() {
 //     wrapText(gCtx, gMeme.txts[1].line, gMeme.txts[1].x, gMeme.txts[1].y, gMeme.width, 28, true);
 }
 
-
 function wrapText(context, text, x, y, maxWidth, lineHeight, fromBottom) {
 
     var pushMethod = (fromBottom) ? 'unshift' : 'push';
@@ -265,7 +268,6 @@ function wrapText(context, text, x, y, maxWidth, lineHeight, fromBottom) {
         context.fillText(lines[k], x, y + lineHeight * k);
     }
 }
-
 
 function alignText(alignment, rowIdx) {
     gMeme.txts[rowIdx].align = alignment;
@@ -334,7 +336,6 @@ function shadowEffect(rowIdx) {
     renderRow();
 }
 
-
 function moveText(direction, rowIdx) {
     switch (direction) {
         case 'left':
@@ -352,7 +353,6 @@ function moveText(direction, rowIdx) {
     }
     renderRow();
 }
-
 
 function textDirection() {
     if (gElCanvas.classList.value === 'canvas-rtl') {
@@ -438,11 +438,6 @@ function setFont(fontFamily, rowIdx, buttonPosition) {
     renderRow();
 }
 
-
-var imageLoader = document.querySelector('#imageLoader');
-imageLoader.addEventListener('change', handleImage, false);
-
-
 function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
@@ -459,4 +454,35 @@ function handleImage(e){
     reader.readAsDataURL(e.target.files[0]);
     var elSection = document.querySelector('.meme-section');
     elSection.classList.remove('hide-meme-section')     
+}
+
+
+
+
+
+function toggleMenu() {
+    if (window.innerWidth < 520) {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+            console.log('menu open')
+            openMenu();
+        } else {
+            console.log('menu close')
+            closeMenu();
+        }
+    }
+}
+
+function closeMenu() {
+    if (window.innerWidth < 520) {
+        menuOpen = false;     
+        document.querySelector('.mobile-menu').style.transform = 'scaleX(0)';
+    }
+}
+
+function openMenu() {
+    if (window.innerWidth < 520) {    
+        menuOpen = true;    
+        document.querySelector('.mobile-menu').style.transform = 'scaleX(1)';
+    }
 }

@@ -75,12 +75,9 @@ section {
     object-fit: cover;
     margin-top: 20px;
     margin: 5px;
-    /* overflow: hidden; */
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);    
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     cursor: pointer;
-    
-
 }
 
 .control {
@@ -89,11 +86,7 @@ section {
     flex-direction: column;
     justify-content: space-between
 }
-/* 
-.editor {
-    display: flex;
-    justify-content: space-between;
-} */
+
 .input-containor {
     display: flex;
     justify-content: center;
@@ -103,7 +96,6 @@ section {
     display: flex;
     justify-content: space-around;
     /* insted of flex-flow, i used direction rtl. in this case when translate the buttons will move back left-tp-right. */
-    /* TO DISCUSS: maybe to put rtl on body, but then the canvas and edit section switch sides. */
     flex-flow: row-reverse;
     /* direction: rtl; */
     align-items: center;
@@ -327,7 +319,6 @@ button {
 	cursor: pointer;
 }
 
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -339,23 +330,10 @@ button {
     cursor: pointer;
 }
 
-/* .arrow-down {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    
-    border-top: 15px solid #323232;
-    position: absolute;
-    margin-top: 61px; 
-    right: 50%;
-} */
-
 header img {
     align-content: center;
     justify-content: center;
-    position: absolute;
-    margin: 0 auto;
+    margin-top: 50px;
 }
 
 #download {
@@ -382,14 +360,12 @@ a:hover {
 }
 
 #about-us {
-    /* min-height: 200px; */
     max-height: 700px;
     background-color: #2db297;
     padding: 15px;
     padding-left: 12%;
     padding-right: 12%;
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-around;
     
 }
@@ -400,21 +376,13 @@ a:hover {
     font-family: calibri;    
 }
 
-/* #about-us img {
-    left: 10%;
-    position: absolute;
-    float: left;
-} */
-
 #about-us2 {
-    /* min-height: 200px; */
     max-height: 700px;
     background-color: #323232;
     padding: 15px;
     padding-left: 12%;
     padding-right: 12%;
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-around;
     color: #ffffff;
 }
@@ -447,7 +415,45 @@ a:hover {
     align-items: center;
 }
 
+/* at the beginning */
+.nav-bar {
+    width: 100%;
+    justify-content: space-between;
+}
 
+.mobile-icon {
+    display: none;
+    font-size: 50px;
+}
+
+#phone-menu{
+    display: none;
+}
+/* 
+.rec{
+    display: none;
+} */
+
+.mobile-menu{
+    width:100%;    
+    display: flex;
+    justify-content: center;
+    height: 40px; 
+    transform: scaleX(1);
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    padding: 0;
+    align-items: center;
+}
+
+li > a:link {
+    margin-top: 10px;
+} 
 
 
 @media screen and (max-width: 950px) {
@@ -461,14 +467,66 @@ a:hover {
     }
 }
 
+@media screen and (max-width:520px) {  
+    .nav-bar {
+        display: inline;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+      
+    .mobile-icon{
+        display: initial;
+        color:#c2c2c2;
+    }
+    
+    .nav-bar{
+        display: inline;
+    }
+    
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        z-index: 9999;
+        background:#fff;
+        height: auto;
+        width: 100%;
+        padding-top: 1em;
+        transition: all 0.4s;
+        transform: scaleX(0);
+        transform-origin: left; 
+    }
+    
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    li {
+        margin: 10px 0 10px 0;
+    }
+    .mobile-menu {
+        background-color: #292929;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        display: block;
+    }
+
+    .rec {
+        display: none;
+        height: 0;
+    }
+}
+
 @media screen and (max-width: 480px) {
     /* start working on responsive design */
     header {
         width: 100%;
     }
-    header a:link {
-        display: none;
-    }
+
     .tagCloud {
         font-size: 12px;
         padding: 0;
@@ -480,9 +538,7 @@ a:hover {
     #canvas {
         height: 200px;
     }
-    .about {
-        
-    }
+
     .about p {
         height: 50px;
         overflow: hidden; 
@@ -491,7 +547,7 @@ a:hover {
         width: 300px;
     }
 }
-
+  
 @media screen and (max-width: 370px) {
     .edit-buttons {
         padding: 0;

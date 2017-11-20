@@ -13,20 +13,33 @@
 
 <body onload="initPage()">
     <header>
-        <div class="link1"><a href="#canvas">Generator</a></div>
-        <img src="img/logo.png"> 
-        <div class="link2"><a href="#about-us">About us</a></div>
+        <div class="container nav-bar" id="top">
+            <label for="phone-menu" class="mobile-icon">&#9776;</label>
+            <input type="checkbox" id="phone-menu" onclick="toggleMenu()">
+            <div class="mobile-menu">
+                <ul>
+                    <li onclick="closeMenu()" class="link1">
+                        <a href="#canvas">Generator</a>
+                    </li>
+                    <li>
+                        <img class="rec" src="img/logo.png">
+                    </li>
+                    <li onclick="closeMenu()" class="link2">
+                        <a href="#about-us">About us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
-    
-    <!-- add class hidden and remove class by js -->
-       <!-- add class hidden and remove class by js -->
-       <section class="meme-section hide-meme-section">
+
+
+    <section class="meme-section hide-meme-section">
         <section class="meme-generator">
             <div class="canvas-containor">
-            <!-- add class hidden and remove class by js -->
-            <canvas class="canvas-rtl" id="canvas" width="500" height="350">
-                Sorry, no canvas available
-            </canvas>
+                <!-- add class hidden and remove class by js -->
+                <canvas class="canvas-rtl" id="canvas" width="500" height="350">
+                    Sorry, no canvas available
+                </canvas>
             </div>
             <div class="control">
                 <div class="editor">
@@ -39,7 +52,7 @@
                         <button class="align-center" onclick="alignText('center', 0)"></button>
                         <button class="align-left" onclick="alignText('left', 0)"></button>
                         <div class="dropdown">
-                        <button class="font-type" onclick="showDropdown('.dropdown-content-top')"></button>                       
+                            <button class="font-type" onclick="showDropdown('.dropdown-content-top')"></button>
                             <div class="dropdown-content dropdown-content-top">
                                 <p onclick="setFont('Sans-Serif', 0, '.dropdown-content-top')">Sans-Serif</p>
                                 <p onclick="setFont('Verdana', 0, '.dropdown-content-top')">Verdana</p>
@@ -48,7 +61,7 @@
                         </div>
                         <button class="font-inc" onclick="changeFontSize('inc', 0)"></button>
                         <button class="font-dec" onclick="changeFontSize('dec', 0)"></button>
-                            <input type="color" class="font-color top-color" value="#ffffff" onchange="changeColor(value, 0)">
+                        <input type="color" class="font-color top-color" value="#ffffff" onchange="changeColor(value, 0)">
                         <button class="shadow" onclick="shadowEffect(0)"></button>
                         <button class="trash" onclick="dismissRow(0)"></button>
                     </section>
@@ -58,19 +71,19 @@
                         <button class="move-down" onclick="moveText('down', 0)"></button>
                         <button class="move-left" onclick="moveText('left', 0)"></button>
                     </section>
-                <!-- </section> -->
+                    <!-- </section> -->
                 </div>
                 <div class="editor">
                     <div class="input-containor">
                         <input type="text" class="input-text input-bottom input-rtl" onkeyup="renderRow()" placeholder="הכנס טקסט כאן" />
-                        </div>
-                        <section class="bottom-buttons">
+                    </div>
+                    <section class="bottom-buttons">
                         <section class="edit-buttons">
                             <button class="align-right" onclick="alignText('right', 1)"></button>
                             <button class="align-center" onclick="alignText('center', 1)"></button>
                             <button class="align-left" onclick="alignText('left', 1)"></button>
-                            <div class="dropdown">                               
-                            <button class="font-type" onclick="showDropdown('.dropdown-content-bottom')"></button>                       
+                            <div class="dropdown">
+                                <button class="font-type" onclick="showDropdown('.dropdown-content-bottom')"></button>
                                 <div class="dropdown-content dropdown-content-bottom">
                                     <p onclick="setFont('Sans-Serif', 1, '.dropdown-content-bottom')">Sans-Serif</p>
                                     <p onclick="setFont('Verdana', 1, '.dropdown-content-bottom')">Verdana</p>
@@ -79,7 +92,7 @@
                             </div>
                             <button class="font-inc" onclick="changeFontSize('inc', 1)"></button>
                             <button class="font-dec" onclick="changeFontSize('dec', 1)"></button>
-                                <input type="color" class="font-color bottom-color" value="#ffffff" onchange="changeColor(value, 1)">
+                            <input type="color" class="font-color bottom-color" value="#ffffff" onchange="changeColor(value, 1)">
                             <button class="shadow" onclick="shadowEffect(1)"></button>
                             <button class="trash" onclick="dismissRow(1)"></button>
                         </section>
@@ -89,60 +102,55 @@
                             <button class="move-down" onclick="moveText('down', 1)"></button>
                             <button class="move-left" onclick="moveText('left', 1)"></button>
                         </section>
-                    </section>                   
+                    </section>
                 </div>
                 <section class="download-area">
-                    <button class="text-direction" onclick="textDirection()"></button>                        
+                    <button class="text-direction" onclick="textDirection()"></button>
                     <a href="#" id="download" onclick="downloadImg(this)">Download image</a>
-                </section>    
+                </section>
             </div>
         </section>
-        </section>
+    </section>
 
     <br>
-<section class="search-section">
-    <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
-    <!-- TO DISCUSS: add a modal for keywords??? -->
-    <button class="tagCloud" onclick="tagCloud()">Tag Cloud</button>
-    <input type="file" class="inputfile" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"/>
-    <button class="upload-button"><label for="imageLoader">Upload photo</label></button>
-</section>
-    
+    <section class="search-section">
+        <input type="text" id="userSearch" onkeyup="renderSearch()" placeholder="Search for images..." />
+        <button class="tagCloud" onclick="tagCloud()">Tag Cloud</button>
+        <input type="file" class="inputfile" id="imageLoader" style="color:transparent;" onchange="this.style.color = 'black';" accept="image/x-png,image/gif,image/jpeg"
+        />
+        <button class="upload-button">
+            <label for="imageLoader">Upload photo</label>
+        </button>
+    </section>
 
-    <!-- <div class="meme-modal modal fade" tabindex="-1" role="dialog" aria-hidden="truth"></div> -->
+
     <div class="meme-gallery"></div>
     <!-- meme gallery render here -->
 
-    <script src="js/main.js"></script>
-    <!-- <script src="js/main.test.js"></script> -->
     <div id="about-us">
-        <!-- <div class="hexagon1"> -->
-            <!-- <div class="hexTop"></div> -->
-            <!-- <div class="hexBottom"></div> -->
-        <!-- </div> -->
-        <!-- <div> -->
-        <img class="profile-img" id="ben-photo" src="img/ben_about_us.jpg" /> 
-        <!-- </div> -->
+        <img class="profile-img" id="ben-photo" src="img/ben_about_us.jpg" />
         <div class="about">
             <h2>Ben Tamir</h2>
             <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laudantium? Dolor, sit sapiente reiciendis recusandae, at molestias tenetur amet omnis ex, sint eligendi sed earum. Dignissimos repellat voluptas vero autem!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laudantium? Dolor, sit sapiente reiciendis recusandae, at molestias
+                tenetur amet omnis ex, sint eligendi sed earum. Dignissimos repellat voluptas vero autem!
             </p>
         </div>
-        </div>
+    </div>
     <div id="about-us2">
         <div class="about">
             <h2>Alice Chursa</h2>
             <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laudantium? Dolor, sit sapiente reiciendis recusandae, at molestias tenetur amet omnis ex, sint eligendi sed earum. Dignissimos repellat voluptas vero autem!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laudantium? Dolor, sit sapiente reiciendis recusandae, at molestias
+                tenetur amet omnis ex, sint eligendi sed earum. Dignissimos repellat voluptas vero autem!
             </p>
         </div>
         <img class="profile-img" id="alice-photo" src="img/alice_about_us.jpg" />
-        <!-- <div class="hexagon2">
-            <div class="hexTop"></div>
-            <div class="hexBottom"></div>
-        </div> -->
     </div>
+
+    
+<script src="js/main.js"></script>
+<!-- <script src="js/main.test.js"></script> -->
 </body>
 
 </html>
