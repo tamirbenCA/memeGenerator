@@ -356,7 +356,6 @@ function moveText(direction, rowIdx) {
 
 function textDirection() {
     if (gElCanvas.classList.value === 'canvas-rtl') {
-        console.log('rtl')
         gElCanvas.classList.add('canvas-ltr');
         gElCanvas.classList.remove('canvas-rtl');
         
@@ -371,7 +370,6 @@ function textDirection() {
         elInputText.classList.remove('input-rtl')
 
     } else if (gElCanvas.classList.value === 'canvas-ltr') {
-        console.log('ltr')
         gElCanvas.classList.add('canvas-rtl');
         gElCanvas.classList.remove('canvas-ltr');
         
