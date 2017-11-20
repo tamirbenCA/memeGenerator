@@ -386,14 +386,6 @@ a:hover {
     justify-content: space-around;
     color: #ffffff;
 }
-/* 
-.link1 {
-    align-self: center;
-}
-
-.link2 {
-    align-self: center;
-} */
 
 #ben-photo {
     margin-right: 10px;
@@ -431,10 +423,6 @@ a:hover {
 #phone-menu{
     display: none;
 }
-/* 
-.rec{
-    display: none;
-} */
 
 .mobile-menu{
     width:100%;    
